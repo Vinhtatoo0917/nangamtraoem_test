@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hệ Thống Quản Trị - Nắng Ấm Trao Em</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+</head>
+<body>
+
+  <!-- Hidden radio controllers for switching Admin Modules -->
+  <input type="radio" name="admin_tab" id="menu-overview" class="admin-tab-toggle" checked>
+  <input type="radio" name="admin_tab" id="menu-campaigns" class="admin-tab-toggle">
+  <input type="radio" name="admin_tab" id="menu-new-campaign" class="admin-tab-toggle">
+  <input type="radio" name="admin_tab" id="menu-edit-content" class="admin-tab-toggle">
+  <input type="radio" name="admin_tab" id="menu-donations" class="admin-tab-toggle">
+  <input type="radio" name="admin_tab" id="menu-volunteers" class="admin-tab-toggle">
+  <input type="radio" name="admin_tab" id="menu-settings" class="admin-tab-toggle">
+
+  <!-- Mobile toggle controller for admin sidebar -->
+  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle-check">
+
+  <div class="admin-layout">
+
+    <!-- Admin Sidebar Navigation -->
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-symbol"><i class="fa-solid fa-sun"></i></div>
+        <div class="brand-text">
+          <span class="brand-name">NẮNG ẤM TRAO EM</span>
+          <span class="brand-role">Bảng Điều Khiển Quản Trị</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-menu">
+        <span class="menu-header">TỔNG QUAN</span>
+        <label for="menu-overview" class="menu-item menu-item-overview">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Thống Kê Tổng Quan</span>
+        </label>
+
+        <span class="menu-header">QUẢN LÝ CHIẾN DỊCH</span>
+        <label for="menu-campaigns" class="menu-item menu-item-campaigns">
+          <i class="fa-solid fa-rectangle-list"></i>
+          <span>Danh Sách Chiến Dịch</span>
+          <span class="badge-count">6</span>
+        </label>
+        <label for="menu-new-campaign" class="menu-item menu-item-new-campaign">
+          <i class="fa-solid fa-circle-plus"></i>
+          <span>Tạo Chiến Dịch Mới</span>
+        </label>
+
+        <span class="menu-header">NỘI DUNG WEBSITE</span>
+        <label for="menu-edit-content" class="menu-item menu-item-edit-content">
+          <i class="fa-solid fa-pen-to-square"></i>
+          <span>Chỉnh Sửa Nội Dung</span>
+        </label>
+
+        <span class="menu-header">DỮ LIỆU ĐĂNG KÝ</span>
+        <label for="menu-donations" class="menu-item menu-item-donations">
+          <i class="fa-solid fa-hand-holding-dollar"></i>
+          <span>Lịch Sử Quyên Góp</span>
+          <span class="badge-count highlight">Mới</span>
+        </label>
+        <label for="menu-volunteers" class="menu-item menu-item-volunteers">
+          <i class="fa-solid fa-people-carry-box"></i>
+          <span>Danh Sách Tình Nguyện</span>
+          <span class="badge-count">28</span>
+        </label>
+
+        <span class="menu-header">HỆ THỐNG</span>
+        <label for="menu-settings" class="menu-item menu-item-settings">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Cấu Hình & Tài Khoản</span>
+        </label>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="index.html" target="_blank" class="back-to-web-btn">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <span>Xem Website Chính</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content Body -->
+    <div class="admin-main">
+
+      <!-- Admin Topbar -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <label for="sidebar-toggle" class="sidebar-hamburger" aria-label="Mở Sidebar">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+          <div class="topbar-breadcrumb">
+            <span class="crumb-parent">Quản Trị</span>
+            <i class="fa-solid fa-chevron-right"></i>
+            <span class="crumb-current">Hệ Thống Điều Hành Chiến Dịch</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="status-indicator">
+            <span class="dot-online"></span>
+            <span>Hệ thống hoạt động ổn định</span>
+          </div>
+          <div class="user-profile">
+            <div class="user-avatar"><i class="fa-solid fa-user"></i></div>
+            <div class="user-meta">
+              <span class="user-name">Ban Điều Phối Quỹ</span>
+              <span class="user-role">Quản Trị Viên</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Panel Body Container -->
+      <div class="admin-content-area">
+
+        <!-- ================= PANEL 1: TỔNG QUAN ================= -->
+        <section class="admin-panel panel-overview">
+          <div class="page-title-box">
+            <h2>Thống Kê Chiến Dịch Thiện Nguyện</h2>
+            <p>Tổng quan tình hình quyên góp, số điểm trường được hỗ trợ và số lượng tình nguyện viên tham gia.</p>
+          </div>
+
+          <!-- 4 Stat Cards -->
+          <div class="overview-cards">
+            <div class="stat-card">
+              <div class="stat-icon icon-orange"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+              <div class="stat-data">
+                <span class="stat-label">Tổng Quỹ Quyên Góp</span>
+                <span class="stat-number">685.450.000 đ</span>
+                <span class="stat-trend trend-up"><i class="fa-solid fa-arrow-up"></i> +12.5% tuần này</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon icon-blue"><i class="fa-solid fa-shirt"></i></div>
+              <div class="stat-data">
+                <span class="stat-label">Áo Ấm Đã Trao</span>
+                <span class="stat-number">3.500 Bộ</span>
+                <span class="stat-trend trend-good"><i class="fa-solid fa-check"></i> 70% chỉ tiêu năm</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon icon-green"><i class="fa-solid fa-school"></i></div>
+              <div class="stat-data">
+                <span class="stat-label">Điểm Trường Kiên Cố</span>
+                <span class="stat-number">12 Điểm</span>
+                <span class="stat-trend">Hà Giang, Sơn La, Điện Biên</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon icon-purple"><i class="fa-solid fa-people-group"></i></div>
+              <div class="stat-data">
+                <span class="stat-label">Tình Nguyện Viên</span>
+                <span class="stat-number">1.280 Người</span>
+                <span class="stat-trend trend-up"><i class="fa-solid fa-arrow-up"></i> 28 đơn chờ duyệt</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions & Recent Logs -->
+          <div class="overview-grid">
+            <div class="admin-card">
+              <div class="card-header">
+                <h3><i class="fa-solid fa-bolt"></i> Thao Tác Nhanh</h3>
+              </div>
+              <div class="card-body quick-actions-list">
+                <label for="menu-new-campaign" class="action-btn-item">
+                  <i class="fa-solid fa-plus-circle text-orange"></i>
+                  <div>
+                    <strong>Khởi tạo chiến dịch mới</strong>
+                    <small>Tạo đợt quyên góp vùng cao mới với mục tiêu riêng</small>
+                  </div>
+                </label>
+                <label for="menu-edit-content" class="action-btn-item">
+                  <i class="fa-solid fa-pen-nib text-blue"></i>
+                  <div>
+                    <strong>Chỉnh sửa thông điệp & slogan</strong>
+                    <small>Thay đổi nội dung hiển thị trên trang chủ landing page</small>
+                  </div>
+                </label>
+                <label for="menu-volunteers" class="action-btn-item">
+                  <i class="fa-solid fa-user-check text-green"></i>
+                  <div>
+                    <strong>Duyệt danh sách tình nguyện viên</strong>
+                    <small>Xem và phân loại tình nguyện viên đăng ký đi bản xa</small>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <div class="admin-card">
+              <div class="card-header">
+                <h3><i class="fa-solid fa-clock-rotate-left"></i> Hoạt Động Gần Đây</h3>
+              </div>
+              <div class="card-body">
+                <ul class="activity-feed">
+                  <li>
+                    <span class="feed-dot"></span>
+                    <div class="feed-info">
+                      <strong>Lê Thị Mai Hương</strong> vừa ủng hộ <strong>250.000 đ</strong>
+                      <span class="feed-time">15 phút trước qua VietQR MB Bank</span>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="feed-dot"></span>
+                    <div class="feed-info">
+                      <strong>Hoàng Văn Nam</strong> nộp đơn đăng ký tình nguyện viên đợt Hà Giang
+                      <span class="feed-time">1 giờ trước</span>
+                    </div>
+                  </li>
+                  <li>
+                    <span class="feed-dot"></span>
+                    <div class="feed-info">
+                      Cập nhật tiến độ: <strong>Điểm trường Xín Mần</strong> đạt 80% chỉ tiêu xây dựng
+                      <span class="feed-time">3 giờ trước</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PANEL 2: DANH SÁCH CHIẾN DỊCH ================= -->
+        <section class="admin-panel panel-campaigns">
+          <div class="page-title-box flex-between">
+            <div>
+              <h2>Danh Sách Chiến Dịch Thiện Nguyện</h2>
+              <p>Quản lý các đợt phát động, tiến độ giải ngân và trạng thái tiếp nhận kinh phí.</p>
+            </div>
+            <label for="menu-new-campaign" class="btn btn-primary">
+              <i class="fa-solid fa-circle-plus"></i> Tạo Chiến Dịch Mới
+            </label>
+          </div>
+
+          <!-- Campaigns Table -->
+          <div class="admin-card">
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Mã</th>
+                    <th>Tên Chiến Dịch & Địa Điểm</th>
+                    <th>Chỉ Tiêu / Mục Tiêu</th>
+                    <th>Đã Quyên Góp</th>
+                    <th>Tiến Độ</th>
+                    <th>Trạng Thái</th>
+                    <th>Thao Tác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>#CD-2026-01</strong></td>
+                    <td>
+                      <div class="campaign-cell">
+                        <strong>Đông Ấm Cho Em - Hà Giang 2026</strong>
+                        <span>Điểm trường Xín Mần, Lũng Cú (Hà Giang)</span>
+                      </div>
+                    </td>
+                    <td>250.000.000 đ</td>
+                    <td class="text-bold text-orange">170.000.000 đ</td>
+                    <td>
+                      <div class="table-progress">
+                        <div class="table-progress-bar"><div class="fill" style="width: 68%;"></div></div>
+                        <span class="progress-percent">68%</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-status status-active">Đang diễn ra</span></td>
+                    <td>
+                      <div class="action-buttons">
+                        <button type="button" class="btn-icon" title="Sửa chiến dịch"><i class="fa-solid fa-pen"></i></button>
+                        <button type="button" class="btn-icon btn-icon-danger" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><strong>#CD-2026-02</strong></td>
+                    <td>
+                      <div class="campaign-cell">
+                        <strong>Bữa Cơm Bán Trú Có Thịt</strong>
+                        <span>Trường Mầm non Sín Chải (Điện Biên)</span>
+                      </div>
+                    </td>
+                    <td>150.000.000 đ</td>
+                    <td class="text-bold text-orange">127.500.000 đ</td>
+                    <td>
+                      <div class="table-progress">
+                        <div class="table-progress-bar"><div class="fill" style="width: 85%;"></div></div>
+                        <span class="progress-percent">85%</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-status status-active">Đang diễn ra</span></td>
+                    <td>
+                      <div class="action-buttons">
+                        <button type="button" class="btn-icon" title="Sửa chiến dịch"><i class="fa-solid fa-pen"></i></button>
+                        <button type="button" class="btn-icon btn-icon-danger" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><strong>#CD-2026-03</strong></td>
+                    <td>
+                      <div class="campaign-cell">
+                        <strong>Kiên Cố Hóa 3 Phòng Học Tà Tổng</strong>
+                        <span>Xã Tà Tổng, Huyện Mường Tè (Lai Châu)</span>
+                      </div>
+                    </td>
+                    <td>300.000.000 đ</td>
+                    <td class="text-bold text-orange">240.000.000 đ</td>
+                    <td>
+                      <div class="table-progress">
+                        <div class="table-progress-bar"><div class="fill" style="width: 80%;"></div></div>
+                        <span class="progress-percent">80%</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-status status-active">Đang diễn ra</span></td>
+                    <td>
+                      <div class="action-buttons">
+                        <button type="button" class="btn-icon" title="Sửa chiến dịch"><i class="fa-solid fa-pen"></i></button>
+                        <button type="button" class="btn-icon btn-icon-danger" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><strong>#CD-2025-08</strong></td>
+                    <td>
+                      <div class="campaign-cell">
+                        <strong>Tủ Sách Ước Mơ & Đèn Năng Lượng</strong>
+                        <span>Điểm trường Tà Xùa (Sơn La)</span>
+                      </div>
+                    </td>
+                    <td>90.000.000 đ</td>
+                    <td class="text-bold text-green">95.000.000 đ</td>
+                    <td>
+                      <div class="table-progress">
+                        <div class="table-progress-bar"><div class="fill" style="width: 100%; background: #10b981;"></div></div>
+                        <span class="progress-percent">105%</span>
+                      </div>
+                    </td>
+                    <td><span class="badge-status status-completed">Đã hoàn thành</span></td>
+                    <td>
+                      <div class="action-buttons">
+                        <button type="button" class="btn-icon" title="Xem chi tiết"><i class="fa-solid fa-eye"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PANEL 3: TẠO CHIẾN DỊCH MỚI ================= -->
+        <section class="admin-panel panel-new-campaign">
+          <div class="page-title-box">
+            <h2>Khởi Tạo Chiến Dịch Thiện Nguyện Mới</h2>
+            <p>Điền đầy đủ thông tin để tạo chiến dịch mới và hiển thị trực tiếp lên trang chủ quyên góp.</p>
+          </div>
+
+          <!-- Alert notification for pure CSS submit simulated -->
+          <div id="create-campaign-success" class="alert-box alert-success">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong>Chiến dịch thiện nguyện đã được khởi tạo thành công!</strong>
+              <p>Chiến dịch đã được thêm vào hệ thống và sẵn sàng tiếp nhận quyên góp của các nhà hảo tâm.</p>
+            </div>
+            <a href="#menu-new-campaign" class="alert-close">&times;</a>
+          </div>
+
+          <div class="admin-card form-card">
+            <form action="#create-campaign-success" method="get" class="admin-form">
+              <div class="form-section-title">
+                <i class="fa-solid fa-circle-info"></i>
+                <span>1. Thông Tin Cơ Bản Về Chiến Dịch</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-col col-8">
+                  <label class="form-label" for="new-camp-name">Tên chiến dịch thiện nguyện <span class="req">*</span></label>
+                  <input type="text" id="new-camp-name" class="form-input" placeholder="Ví dụ: Áo Ấm Vượt Đèo Sơn La 2026" required>
+                </div>
+                <div class="form-col col-4">
+                  <label class="form-label" for="new-camp-code">Mã quản lý chiến dịch</label>
+                  <input type="text" id="new-camp-code" class="form-input" value="CD-2026-04" readonly>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-col col-6">
+                  <label class="form-label" for="new-camp-location">Địa bàn / Điểm trường thụ hưởng <span class="req">*</span></label>
+                  <input type="text" id="new-camp-location" class="form-input" placeholder="Ví dụ: Điểm trường Bản Hốc, Huyện Mường Chà, Điện Biên" required>
+                </div>
+                <div class="form-col col-6">
+                  <label class="form-label" for="new-camp-category">Hạng mục chính <span class="req">*</span></label>
+                  <select id="new-camp-category" class="form-input">
+                    <option value="ao-am">Áo ấm & Chăn bông mùa đông</option>
+                    <option value="xay-truong">Kiên cố hóa phòng học / Điểm trường</option>
+                    <option value="bua-an">Bữa ăn bán trú dinh dưỡng cho em</option>
+                    <option value="hoc-bong">Học bổng & Sách vở đồ dùng học tập</option>
+                    <option value="y-te">Tủ thuốc học đường & Nước sạch</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-col col-4">
+                  <label class="form-label" for="new-camp-target">Mục tiêu kinh phí (VNĐ) <span class="req">*</span></label>
+                  <input type="number" id="new-camp-target" class="form-input" placeholder="150000000" min="1000000" step="500000" required>
+                </div>
+                <div class="form-col col-4">
+                  <label class="form-label" for="new-camp-start">Ngày bắt đầu tiếp nhận</label>
+                  <input type="date" id="new-camp-start" class="form-input">
+                </div>
+                <div class="form-col col-4">
+                  <label class="form-label" for="new-camp-end">Ngày kết thúc chiến dịch</label>
+                  <input type="date" id="new-camp-end" class="form-input">
+                </div>
+              </div>
+
+              <div class="form-section-title">
+                <i class="fa-solid fa-pen-nib"></i>
+                <span>2. Nội Dung & Hình Ảnh Truyền Thông</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="new-camp-summary">Mô tả ngắn (Hiển thị thẻ ngoài trang chủ) <span class="req">*</span></label>
+                <textarea id="new-camp-summary" rows="2" class="form-input" placeholder="Mô tả tóm tắt thực trạng thiếu thốn của các em nhỏ tại điểm trường..." required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="new-camp-detail">Chi tiết câu chuyện & Kế hoạch giải ngân</label>
+                <textarea id="new-camp-detail" rows="4" class="form-input" placeholder="Nội dung chi tiết về số lượng học sinh, danh mục quà tặng dự kiến, chi phí mua sắm vật phẩm minh bạch..."></textarea>
+              </div>
+
+              <div class="form-row">
+                <div class="form-col col-6">
+                  <label class="form-label" for="new-camp-image">Ảnh đại diện chiến dịch (URL ảnh hoặc chọn file)</label>
+                  <input type="text" id="new-camp-image" class="form-input" placeholder="https://images.unsplash.com/... hoặc assets/images/anh.jpg">
+                </div>
+                <div class="form-col col-6">
+                  <label class="form-label" for="new-camp-volunteers">Mở đăng ký tình nguyện viên trực tiếp?</label>
+                  <select id="new-camp-volunteers" class="form-input">
+                    <option value="yes">Có - Mở đăng ký người đi thực địa</option>
+                    <option value="no">Không - Chỉ nhận quyên góp tài chính</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  <i class="fa-solid fa-floppy-disk"></i> Lưu & Đăng Chiến Dịch Lên Website
+                </button>
+                <label for="menu-campaigns" class="btn btn-secondary btn-lg">
+                  <i class="fa-solid fa-xmark"></i> Hủy Bỏ
+                </label>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ================= PANEL 4: CHỈNH SỬA NỘI DUNG WEBSITE ================= -->
+        <section class="admin-panel panel-edit-content">
+          <div class="page-title-box">
+            <h2>Chỉnh Sửa Nội Dung Website Landing Page</h2>
+            <p>Cập nhật tiêu đề, slogan, thông số đếm tác động và thông tin liên hệ hiển thị ở trang chủ.</p>
+          </div>
+
+          <div id="save-content-success" class="alert-box alert-success">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <strong>Đã lưu cập nhật nội dung website thành công!</strong>
+              <p>Các nội dung mới đã được cập nhật vào cấu hình hiển thị của landing page.</p>
+            </div>
+            <a href="#menu-edit-content" class="alert-close">&times;</a>
+          </div>
+
+          <div class="admin-card form-card">
+            <form action="#save-content-success" method="get" class="admin-form">
+
+              <!-- Group 1: Header & Hero -->
+              <div class="form-section-title">
+                <i class="fa-solid fa-heading"></i>
+                <span>Phần Đầu Trang (Hero Banner)</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-col col-6">
+                  <label class="form-label" for="site-brand">Tên chiến dịch chính</label>
+                  <input type="text" id="site-brand" class="form-input" value="Nắng Ấm Trao Em">
+                </div>
+                <div class="form-col col-6">
+                  <label class="form-label" for="site-badge">Huy hiệu thông báo nhỏ</label>
+                  <input type="text" id="site-badge" class="form-input" value="Chiến dịch tình nguyện Đông Ấm 2026">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="site-slogan">Slogan chiến dịch (Khẩu hiệu)</label>
+                <input type="text" id="site-slogan" class="form-input" value="Góp chút nắng vàng, thắp ngàn ước mơ">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="site-desc">Đoạn văn giới thiệu mở đầu</label>
+                <textarea id="site-desc" rows="3" class="form-input">Hàng ngàn em nhỏ tại các điểm bản vùng cao Hà Giang, Điện Biên, Sơn La đang vượt qua mùa đông buốt giá trong những manh áo mỏng và phòng học tạm bợ. Hãy cùng chúng tôi mang hơi ấm yêu thương, sách vở và nụ cười rạng rỡ tới các em!</textarea>
+              </div>
+
+              <!-- Group 2: Key Numbers Counter -->
+              <div class="form-section-title">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Chỉ Số Tác Động (Metrics Counter)</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-col col-3">
+                  <label class="form-label" for="stat-children">Số trẻ em hỗ trợ</label>
+                  <input type="text" id="stat-children" class="form-input" value="4.850+">
+                </div>
+                <div class="form-col col-3">
+                  <label class="form-label" for="stat-meals">Bữa cơm bán trú</label>
+                  <input type="text" id="stat-meals" class="form-input" value="120.000+">
+                </div>
+                <div class="form-col col-3">
+                  <label class="form-label" for="stat-trips">Số đợt thiện nguyện</label>
+                  <input type="text" id="stat-trips" class="form-input" value="42 Đợt">
+                </div>
+                <div class="form-col col-3">
+                  <label class="form-label" for="stat-transparency">Mức độ sao kê</label>
+                  <input type="text" id="stat-transparency" class="form-input" value="100%">
+                </div>
+              </div>
+
+              <!-- Group 3: Bank Account / QR Config -->
+              <div class="form-section-title">
+                <i class="fa-solid fa-building-columns"></i>
+                <span>Thông Tin Tài Khoản Tiếp Nhận & VietQR</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-col col-4">
+                  <label class="form-label" for="bank-name">Tên ngân hàng</label>
+                  <input type="text" id="bank-name" class="form-input" value="MB Bank (Ngân hàng Quân Đội)">
+                </div>
+                <div class="form-col col-4">
+                  <label class="form-label" for="bank-acc">Số tài khoản thiện nguyện</label>
+                  <input type="text" id="bank-acc" class="form-input" value="0987 654 321">
+                </div>
+                <div class="form-col col-4">
+                  <label class="form-label" for="bank-owner">Tên chủ tài khoản</label>
+                  <input type="text" id="bank-owner" class="form-input" value="QUY THIEN NGUYEN NANG AM TRAO EM">
+                </div>
+              </div>
+
+              <!-- Group 4: Footer Contact -->
+              <div class="form-section-title">
+                <i class="fa-solid fa-address-book"></i>
+                <span>Thông Tin Liên Hệ Chân Trang</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-col col-6">
+                  <label class="form-label" for="contact-phone">Hotline / Zalo hỗ trợ</label>
+                  <input type="text" id="contact-phone" class="form-input" value="0987.654.321">
+                </div>
+                <div class="form-col col-6">
+                  <label class="form-label" for="contact-email">Email chính thức</label>
+                  <input type="email" id="contact-email" class="form-input" value="nangamtraoem.charity@gmail.com">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-address">Địa chỉ kho tiếp nhận hiện vật (Áo ấm, sách vở)</label>
+                <input type="text" id="contact-address" class="form-input" value="Số 45 Hoàng Hoa Thám, Ba Đình, Hà Nội">
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  <i class="fa-solid fa-floppy-disk"></i> Lưu Thay Đổi Nội Dung
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <!-- ================= PANEL 5: LỊCH SỬ QUYÊN GÓP ================= -->
+        <section class="admin-panel panel-donations">
+          <div class="page-title-box flex-between">
+            <div>
+              <h2>Lịch Sử Quyên Góp Từ Nhà Hảo Tâm</h2>
+              <p>Danh sách các giao dịch ủng hộ tiền mặt, chuyển khoản ngân hàng và sao kê tự động.</p>
+            </div>
+            <button type="button" class="btn btn-secondary">
+              <i class="fa-solid fa-file-excel"></i> Xuất File Excel Sao Kê
+            </button>
+          </div>
+
+          <div class="admin-card">
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Mã GD</th>
+                    <th>Thời Gian</th>
+                    <th>Họ Tên Nhà Hảo Tâm</th>
+                    <th>Số Tiền</th>
+                    <th>Hạng Mục Ủng Hộ</th>
+                    <th>Nội Dung Chuyển Khoản</th>
+                    <th>Trạng Thái</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>#GD-9941</strong></td>
+                    <td>05/11/2026 11:25</td>
+                    <td>Nguyễn Hữu Tài</td>
+                    <td class="text-bold text-green">+ 500.000 đ</td>
+                    <td>Áo ấm & Chăn bông</td>
+                    <td>NANGAM - Nguyen Huu Tai - Ung ho ao am mua dong</td>
+                    <td><span class="badge-status status-verified"><i class="fa-solid fa-check"></i> Đã ghi nhận</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>#GD-9940</strong></td>
+                    <td>05/11/2026 10:14</td>
+                    <td><em>(Nhà hảo tâm giấu tên)</em></td>
+                    <td class="text-bold text-green">+ 2.000.000 đ</td>
+                    <td>Xây điểm trường</td>
+                    <td>NANGAM - Thuong tang cac em nho vung cao</td>
+                    <td><span class="badge-status status-verified"><i class="fa-solid fa-check"></i> Đã ghi nhận</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>#GD-9939</strong></td>
+                    <td>05/11/2026 09:05</td>
+                    <td>Lê Thị Mai Hương</td>
+                    <td class="text-bold text-green">+ 250.000 đ</td>
+                    <td>Bữa cơm có thịt</td>
+                    <td>NANGAM - Mai Huong ung ho bua com co thit</td>
+                    <td><span class="badge-status status-verified"><i class="fa-solid fa-check"></i> Đã ghi nhận</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>#GD-9938</strong></td>
+                    <td>04/11/2026 21:40</td>
+                    <td>Tập thể lớp K62 FTU</td>
+                    <td class="text-bold text-green">+ 5.500.000 đ</td>
+                    <td>Quỹ chung dự án</td>
+                    <td>NANGAM - K62 FTU dong hanh cung du an</td>
+                    <td><span class="badge-status status-verified"><i class="fa-solid fa-check"></i> Đã ghi nhận</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>#GD-9937</strong></td>
+                    <td>04/11/2026 18:15</td>
+                    <td>Trần Quang Dũng</td>
+                    <td class="text-bold text-green">+ 1.000.000 đ</td>
+                    <td>Đèn năng lượng mặt trời</td>
+                    <td>NANGAM - Ho tro kinh phi mua den NLMT</td>
+                    <td><span class="badge-status status-verified"><i class="fa-solid fa-check"></i> Đã ghi nhận</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PANEL 6: DANH SÁCH TÌNH NGUYỆN VIÊN ================= -->
+        <section class="admin-panel panel-volunteers">
+          <div class="page-title-box flex-between">
+            <div>
+              <h2>Đơn Đăng Ký Tình Nguyện Viên Vùng Cao</h2>
+              <p>Danh sách các bạn trẻ đăng ký tham gia các chuyến xe trực tiếp lên các bản vùng cao.</p>
+            </div>
+            <button type="button" class="btn btn-secondary">
+              <i class="fa-solid fa-file-arrow-down"></i> Tải Danh Sách Điểm Danh
+            </button>
+          </div>
+
+          <div class="admin-card">
+            <div class="table-container">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Họ và Tên</th>
+                    <th>Năm Sinh</th>
+                    <th>Số Điện Thoại / Zalo</th>
+                    <th>Nơi Xuất Phát</th>
+                    <th>Chuyến Đi Đăng Ký</th>
+                    <th>Kỹ Năng Đóng Góp</th>
+                    <th>Trạng Thái Hồ Sơ</th>
+                    <th>Thao Tác</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="vol-profile">
+                        <div class="vol-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div>
+                          <strong>Hoàng Văn Nam</strong>
+                          <span class="vol-email">nam.hoang@gmail.com</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>1998 (28 tuổi)</td>
+                    <td>0912.345.678</td>
+                    <td>Hà Nội</td>
+                    <td><strong>Hà Giang (15/12 - 18/12)</strong></td>
+                    <td><span class="skill-tag">Lái xe đèo</span> <span class="skill-tag">Hậu cần</span></td>
+                    <td><span class="badge-status status-pending">Chờ phỏng vấn</span></td>
+                    <td>
+                      <div class="action-buttons">
+                        <button type="button" class="btn-icon text-green" title="Duyệt đơn"><i class="fa-solid fa-check"></i></button>
+                        <button type="button" class="btn-icon btn-icon-danger" title="Từ chối"><i class="fa-solid fa-xmark"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="vol-profile">
+                        <div class="vol-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div>
+                          <strong>Trần Thu Thảo</strong>
+                          <span class="vol-email">thao.tran@gmail.com</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>2001 (25 tuổi)</td>
+                    <td>0988.765.432</td>
+                    <td>Đà Nẵng</td>
+                    <td><strong>Điện Biên (05/01 - 08/01)</strong></td>
+                    <td><span class="skill-tag">Y tế / Sơ cứu</span> <span class="skill-tag">Hoạt náo</span></td>
+                    <td><span class="badge-status status-verified">Đã duyệt</span></td>
+                    <td>
+                      <div class="action-buttons">
+                        <button type="button" class="btn-icon" title="Chi tiết"><i class="fa-solid fa-eye"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="vol-profile">
+                        <div class="vol-avatar"><i class="fa-solid fa-user"></i></div>
+                        <div>
+                          <strong>Đỗ Minh Đức</strong>
+                          <span class="vol-email">duc.do@gmail.com</span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>1995 (31 tuổi)</td>
+                    <td>0904.112.233</td>
+                    <td>TP. Hồ Chí Minh</td>
+                    <td><strong>Sơn La (20/01 - 23/01)</strong></td>
+                    <td><span class="skill-tag">Quay phim / Ảnh</span> <span class="skill-tag">Sửa điện</span></td>
+                    <td><span class="badge-status status-verified">Đã duyệt</span></td>
+                    <td>
+                      <div class="action-buttons">
+                        <button type="button" class="btn-icon" title="Chi tiết"><i class="fa-solid fa-eye"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PANEL 7: CẤU HÌNH & TÀI KHOẢN ================= -->
+        <section class="admin-panel panel-settings">
+          <div class="page-title-box">
+            <h2>Cấu Hình Hệ Thống Quản Trị</h2>
+            <p>Bảo mật, phân quyền quản trị viên và thiết lập cơ chế sao kê tự động.</p>
+          </div>
+
+          <div class="admin-card form-card">
+            <form action="#menu-overview" method="get" class="admin-form">
+              <div class="form-section-title">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Tài Khoản Quản Trị Viên</span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-col col-6">
+                  <label class="form-label">Tên hiển thị</label>
+                  <input type="text" class="form-input" value="Ban Điều Phối Quỹ Nắng Ấm">
+                </div>
+                <div class="form-col col-6">
+                  <label class="form-label">Email quản trị</label>
+                  <input type="email" class="form-input" value="admin@nangamtraoem.vn">
+                </div>
+              </div>
+
+              <div class="form-section-title">
+                <i class="fa-solid fa-bell"></i>
+                <span>Thông Báo & Đồng Bộ Dữ Liệu</span>
+              </div>
+
+              <div class="checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" checked>
+                  <span>Gửi email thông báo tự động mỗi khi có đóng góp từ 1.000.000 đ trở lên</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" checked>
+                  <span>Tự động cập nhật bảng sao kê thời gian thực trên landing page</span>
+                </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" checked>
+                  <span>Gửi tin nhắn Zalo xác nhận đăng ký cho tình nguyện viên</span>
+                </label>
+              </div>
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary btn-lg">
+                  <i class="fa-solid fa-check"></i> Lưu Cấu Hình Hệ Thống
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
