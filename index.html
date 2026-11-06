@@ -12,13 +12,13 @@
 </head>
 <body>
 
-  <!-- Floating quick action button for mobile/scroll -->
+  
   <a href="#action-section" class="floating-cta" title="Quyên góp ngay">
     <i class="fa-solid fa-heart"></i>
     <span>Chung tay ngay</span>
   </a>
 
-  <!-- Top Announcement Bar -->
+  
   <div class="top-bar">
     <div class="container top-bar-content">
       <span><i class="fa-solid fa-bullhorn"></i> Chiến dịch Đông 2026: Đã quyên góp được <strong>68%</strong> chỉ tiêu áo ấm & trường học vùng cao!</span>
@@ -26,18 +26,18 @@
     </div>
   </div>
 
-  <!-- Header / Navigation -->
+  
   <header class="header">
     <div class="container nav-container">
       <a href="#" class="logo">
-        <div class="logo-icon"><i class="fa-solid fa-sun"></i></div>
+        <div class="logo-icon"><img src="assets/images/logo.jpg" alt="Logo Nắng Ấm Trao Em" class="logo-img"></div>
         <div class="logo-text">
           <span class="brand-title">NẮNG ẤM TRAO EM</span>
           <span class="brand-sub">Quỹ thiện nguyện trẻ em vùng cao</span>
         </div>
       </a>
 
-      <!-- Pure CSS Mobile Menu Toggle -->
+      
       <input type="checkbox" id="nav-toggle" class="nav-toggle">
       <label for="nav-toggle" class="nav-toggle-label" aria-label="Menu">
         <span></span>
@@ -68,7 +68,7 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
+    
     <section class="hero">
       <div class="container hero-container">
         <div class="hero-content">
@@ -93,7 +93,7 @@
             </a>
           </div>
 
-          <!-- Quick Trust Proof -->
+          
           <div class="hero-trust">
             <div class="trust-avatars">
               <span class="trust-avatar"><i class="fa-solid fa-user"></i></span>
@@ -109,15 +109,108 @@
         </div>
 
         <div class="hero-visual">
-          <div class="hero-card-main">
-            <div class="hero-image-wrapper">
-              <img src="assets/images/embevungcao.jpg" alt="Em bé vùng cao ấm áp nụ cười" class="hero-img">
-              <div class="hero-tag">
-                <i class="fa-solid fa-location-dot"></i> Điểm trường Xín Mần, Hà Giang
+          <div class="hero-slider-container">
+            <!-- Pure CSS Slider Radio Controls -->
+            <input type="radio" name="hero-slide" id="hero-slide-1" class="hero-slide-radio" checked>
+            <input type="radio" name="hero-slide" id="hero-slide-2" class="hero-slide-radio">
+            <input type="radio" name="hero-slide" id="hero-slide-3" class="hero-slide-radio">
+            <input type="radio" name="hero-slide" id="hero-slide-4" class="hero-slide-radio">
+
+            <!-- Slider Arrows (Pure CSS Label Controls) -->
+            <div class="slider-arrow-controls">
+              <div class="arrow-group arrow-group-1">
+                <label for="hero-slide-4" class="slider-arrow slider-arrow-prev" aria-label="Câu chuyện trước">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </label>
+                <label for="hero-slide-2" class="slider-arrow slider-arrow-next" aria-label="Câu chuyện tiếp theo">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </label>
+              </div>
+              <div class="arrow-group arrow-group-2">
+                <label for="hero-slide-1" class="slider-arrow slider-arrow-prev" aria-label="Câu chuyện trước">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </label>
+                <label for="hero-slide-3" class="slider-arrow slider-arrow-next" aria-label="Câu chuyện tiếp theo">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </label>
+              </div>
+              <div class="arrow-group arrow-group-3">
+                <label for="hero-slide-2" class="slider-arrow slider-arrow-prev" aria-label="Câu chuyện trước">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </label>
+                <label for="hero-slide-4" class="slider-arrow slider-arrow-next" aria-label="Câu chuyện tiếp theo">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </label>
+              </div>
+              <div class="arrow-group arrow-group-4">
+                <label for="hero-slide-3" class="slider-arrow slider-arrow-prev" aria-label="Câu chuyện trước">
+                  <i class="fa-solid fa-chevron-left"></i>
+                </label>
+                <label for="hero-slide-1" class="slider-arrow slider-arrow-next" aria-label="Câu chuyện tiếp theo">
+                  <i class="fa-solid fa-chevron-right"></i>
+                </label>
               </div>
             </div>
 
-            <!-- Floating Stat Badges -->
+            <!-- Slides Wrapper -->
+            <div class="hero-slides-wrapper">
+              <div class="hero-slide-item hero-slide-item-1">
+                <div class="hero-slide-media">
+                  <img src="assets/images/embevungcao.jpg" alt="Bé Thào Thị Mẩy - Điểm trường Xín Mần" class="hero-img">
+                  <div class="hero-tag">
+                    <i class="fa-solid fa-location-dot"></i> Điểm trường Xín Mần, Hà Giang
+                  </div>
+                </div>
+                <div class="hero-slide-story">
+                  <div class="hero-slide-badge">Câu chuyện 01 • Vượt rét tìm chữ</div>
+                  <h3 class="hero-story-title">Bé Thào Thị Mẩy (6 tuổi)</h3>
+                  <p class="hero-story-desc">Mùa đông năm nay, đôi chân bé Mẩy không còn buốt giá nhờ đôi ủng ấm và chiếc áo khoác 3 lớp được các nhà hảo tâm gửi tặng. Ánh mắt em rạng ngời mỗi khi bước vào lớp học ấm cúng.</p>
+                </div>
+              </div>
+
+              <div class="hero-slide-item hero-slide-item-2">
+                <div class="hero-slide-media">
+                  <img src="assets/images/embevungcao1.jpg" alt="Hai anh em Vàng A Páo - Bản Lũng Cú" class="hero-img">
+                  <div class="hero-tag">
+                    <i class="fa-solid fa-location-dot"></i> Bản Lũng Cú, Hà Giang
+                  </div>
+                </div>
+                <div class="hero-slide-story">
+                  <div class="hero-slide-badge">Câu chuyện 02 • Bữa cơm có thịt</div>
+                  <h3 class="hero-story-title">Hai anh em Vàng A Páo</h3>
+                  <p class="hero-story-desc">Trước đây, bữa trưa của hai anh em chỉ có nắm cơm nguội chấm muối ớt. Giờ đây, những bữa cơm bán trú nóng hổi đầy đủ thịt trứng đã tiếp thêm năng lượng để các em theo đuổi ước mơ.</p>
+                </div>
+              </div>
+
+              <div class="hero-slide-item hero-slide-item-3">
+                <div class="hero-slide-media">
+                  <img src="assets/images/embevungcao2.jpg" alt="Bé Sùng A Dơ - Bản Sín Chải" class="hero-img">
+                  <div class="hero-tag">
+                    <i class="fa-solid fa-location-dot"></i> Bản Sín Chải, Điện Biên
+                  </div>
+                </div>
+                <div class="hero-slide-story">
+                  <div class="hero-slide-badge">Câu chuyện 03 • Tủ sách ước mơ</div>
+                  <h3 class="hero-story-title">Bé Sùng A Dơ (8 tuổi)</h3>
+                  <p class="hero-story-desc">Niềm đam mê khám phá thế giới qua từng trang sách truyện tranh mới. Em ước mơ sau này trở thành thầy giáo để trở về dạy chữ cho các em nhỏ trong bản làng mình.</p>
+                </div>
+              </div>
+
+              <div class="hero-slide-item hero-slide-item-4">
+                <div class="hero-slide-media">
+                  <img src="assets/images/embevungcao3.jpg" alt="Bé Lầu Thị Hoa - Tà Xùa" class="hero-img">
+                  <div class="hero-tag">
+                    <i class="fa-solid fa-location-dot"></i> Điểm trường Tà Xùa, Sơn La
+                  </div>
+                </div>
+                <div class="hero-slide-story">
+                  <div class="hero-slide-badge">Câu chuyện 04 • Điểm trường kiên cố</div>
+                  <h3 class="hero-story-title">Bé Lầu Thị Hoa (7 tuổi)</h3>
+                  <p class="hero-story-desc">Lớp học mái tôn gió lùa ngày nào nay đã được thay thế bằng phòng học tường gạch vững chãi, có điện năng lượng mặt trời thắp sáng những ước mơ bay cao của đàn em nhỏ.</p>
+                </div>
+              </div>
+            </div>
+
             <div class="floating-badge badge-top-right">
               <div class="icon-circle sun-glow"><i class="fa-solid fa-shirt"></i></div>
               <div>
@@ -138,7 +231,7 @@
       </div>
     </section>
 
-    <!-- Impact Counter Bar -->
+    
     <section class="metrics-bar">
       <div class="container metrics-grid">
         <div class="metric-item">
@@ -164,7 +257,7 @@
       </div>
     </section>
 
-    <!-- About Section -->
+    
     <section class="section about-section" id="about">
       <div class="container">
         <div class="section-header">
@@ -180,7 +273,7 @@
             <p>Nhiều điểm trường nằm trên đỉnh núi đá cằn cỗi, gió lùa tứ phía, thiếu thốn chăn màn, áo khoác ấm và giày ủng chống lạnh.</p>
           </div>
 
-          <div class="about-card highlight">
+          <div class="about-card">
             <div class="card-icon"><i class="fa-solid fa-bowl-rice"></i></div>
             <h3>Bữa cơm chỉ có măng ớt</h3>
             <p>Bữa trưa của các em thường chỉ là nắm cơm nguội chan nước lã hoặc chút măng rừng luộc, thiếu trầm trọng đạm và chất dinh dưỡng.</p>
@@ -195,7 +288,7 @@
       </div>
     </section>
 
-    <!-- Section Gallery: Nụ Cười & Ánh Mắt Các Bé Vùng Cao -->
+    
     <section class="section gallery-section" id="gallery">
       <div class="container">
         <div class="section-header">
@@ -205,7 +298,7 @@
         </div>
 
         <div class="gallery-grid">
-          <!-- Item 1 -->
+          
           <div class="gallery-card">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao.jpg" alt="Bé gái vùng cao với đôi mắt sáng ngời" class="gallery-img" loading="lazy">
@@ -217,7 +310,7 @@
             </div>
           </div>
 
-          <!-- Item 2 -->
+          
           <div class="gallery-card">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao1.jpg" alt="Em bé với chiếc áo ấm mới" class="gallery-img" loading="lazy">
@@ -229,7 +322,7 @@
             </div>
           </div>
 
-          <!-- Item 3 -->
+          
           <div class="gallery-card">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao2.jpg" alt="Nụ cười hồn nhiên của em bé bản xa" class="gallery-img" loading="lazy">
@@ -241,7 +334,7 @@
             </div>
           </div>
 
-          <!-- Item 4 -->
+          
           <div class="gallery-card">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao3.jpg" alt="Ánh mắt trong trẻo thơ ngây" class="gallery-img" loading="lazy">
@@ -253,7 +346,7 @@
             </div>
           </div>
 
-          <!-- Item 5 -->
+          
           <div class="gallery-card">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao4.jpg" alt="Em bé vùng cao ấm áp trong khăn len" class="gallery-img" loading="lazy">
@@ -265,7 +358,7 @@
             </div>
           </div>
 
-          <!-- Item 6 -->
+          
           <div class="gallery-card">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao5.jpg" alt="Những bước chân tìm con chữ" class="gallery-img" loading="lazy">
@@ -277,7 +370,7 @@
             </div>
           </div>
 
-          <!-- Item 7 -->
+          
           <div class="gallery-card">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao6.jpg" alt="Khoảnh khắc bé nhận quà thiện nguyện" class="gallery-img" loading="lazy">
@@ -289,7 +382,7 @@
             </div>
           </div>
 
-          <!-- Item 8 -->
+          
           <div class="gallery-card">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao7.jpg" alt="Gương mặt đáng yêu của bé gái vùng cao" class="gallery-img" loading="lazy">
@@ -301,7 +394,7 @@
             </div>
           </div>
 
-          <!-- Item 9 -->
+          
           <div class="gallery-card">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao8.jpg" alt="Hai chị em vùng cao chăm nhau" class="gallery-img" loading="lazy">
@@ -313,7 +406,7 @@
             </div>
           </div>
 
-          <!-- Item 10 -->
+          
           <div class="gallery-card">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao9.jpg" alt="Nụ cười trong veo của em nhỏ" class="gallery-img" loading="lazy">
@@ -325,7 +418,7 @@
             </div>
           </div>
 
-          <!-- Item 11 -->
+          
           <div class="gallery-card">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao10.jpg" alt="Ánh mắt chân chất của cậu bé bản xa" class="gallery-img" loading="lazy">
@@ -337,7 +430,7 @@
             </div>
           </div>
 
-          <!-- Item 12 -->
+          
           <div class="gallery-card">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao11.jpg" alt="Khoảnh khắc xúc động cùng tình nguyện viên" class="gallery-img" loading="lazy">
@@ -359,7 +452,7 @@
       </div>
     </section>
 
-    <!-- Action Section: Dual Tabs (Donation & Volunteer Registration) -->
+    
     <section class="section action-section" id="action-section">
       <div class="container">
         <div class="section-header">
@@ -369,11 +462,11 @@
         </div>
 
         <div class="action-box">
-          <!-- Radio controllers for Pure CSS Tab Switching -->
+          
           <input type="radio" name="action-tab" id="tab-donate" class="tab-control-input" checked>
           <input type="radio" name="action-tab" id="tab-volunteer" class="tab-control-input">
 
-          <!-- Tab Navigation Buttons (Labels) -->
+          
           <div class="tab-nav">
             <label for="tab-donate" class="tab-label tab-label-donate">
               <i class="fa-solid fa-circle-dollar-to-slot"></i>
@@ -385,15 +478,15 @@
             </label>
           </div>
 
-          <!-- TAB 1 CONTENT: QUYÊN GÓP TIỀN -->
+          
           <div class="tab-pane tab-pane-donate">
             <div class="action-grid">
-              <!-- Left: Interactive Form & Presets -->
+              
               <div class="form-wrapper">
                 <h3 class="pane-title"><i class="fa-solid fa-heart-pulse"></i> Thông Tin Người Ủng Hộ</h3>
                 <p class="pane-subtitle">Hệ thống ghi nhận và gửi thư cảm ơn tự động kèm cập nhật tiến độ giải ngân.</p>
 
-                <!-- Feedback alert when form submitted -->
+                
                 <div id="donate-success" class="success-message">
                   <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
                   <div>
@@ -481,7 +574,7 @@
                 </form>
               </div>
 
-              <!-- Right: Bank Transfer & VietQR Card -->
+              
               <div class="qr-wrapper">
                 <div class="qr-card">
                   <div class="qr-card-header">
@@ -523,10 +616,10 @@
             </div>
           </div>
 
-          <!-- TAB 2 CONTENT: ĐĂNG KÝ TÌNH NGUYỆN VIÊN TRỰC TIẾP -->
+          
           <div class="tab-pane tab-pane-volunteer">
             <div class="action-grid volunteer-grid">
-              <!-- Left: Form Đăng ký đi vùng cao -->
+              
               <div class="form-wrapper">
                 <h3 class="pane-title"><i class="fa-solid fa-map-location-dot"></i> Đơn Đăng Ký Tình Nguyện Viên Vùng Cao</h3>
                 <p class="pane-subtitle">Hành trình thiện nguyện mang hơi ấm trực tiếp tới các em nhỏ bản xa. Đội ngũ điều phối sẽ liên hệ phỏng vấn & hướng dẫn chuẩn bị trong vòng 24h.</p>
@@ -629,7 +722,7 @@
                 </form>
               </div>
 
-              <!-- Right: Volunteer trip details card -->
+              
               <div class="volunteer-info-wrapper">
                 <div class="trip-card">
                   <div class="trip-header">
@@ -688,7 +781,7 @@
       </div>
     </section>
 
-    <!-- Project Activities / Impact Section -->
+    
     <section class="section activities-section" id="impact">
       <div class="container">
         <div class="section-header">
@@ -698,7 +791,7 @@
         </div>
 
         <div class="cards-grid">
-          <!-- Card 1 -->
+          
           <div class="activity-card">
             <div class="card-media">
               <img src="assets/images/hotrotuthien.jpg" alt="Xây điểm trường kiên cố cho các bé" class="card-img">
@@ -719,7 +812,7 @@
             </div>
           </div>
 
-          <!-- Card 2 -->
+          
           <div class="activity-card">
             <div class="card-media">
               <img src="assets/images/embevungcao4.jpg" alt="Áo ấm mùa đông cho em bé vùng cao" class="card-img">
@@ -740,7 +833,7 @@
             </div>
           </div>
 
-          <!-- Card 3 -->
+          
           <div class="activity-card">
             <div class="card-media">
               <img src="assets/images/embevungcao2.jpg" alt="Bữa ăn dinh dưỡng và nụ cười rạng rỡ của bé" class="card-img">
@@ -764,7 +857,7 @@
       </div>
     </section>
 
-    <!-- Transparency / Financial Accountability Section -->
+    
     <section class="section transparency-section" id="transparency">
       <div class="container">
         <div class="transparency-box">
@@ -779,7 +872,7 @@
             </a>
           </div>
 
-          <!-- Recent Public Transactions Table -->
+          
           <div class="table-responsive">
             <table class="saoke-table">
               <thead>
@@ -838,7 +931,7 @@
       </div>
     </section>
 
-    <!-- Warm Stories / Testimonials Section -->
+    
     <section class="section stories-section" id="stories">
       <div class="container">
         <div class="section-header">
@@ -887,7 +980,7 @@
       </div>
     </section>
 
-    <!-- FAQ Accordion (Pure CSS :checked accordion) -->
+    
     <section class="section faq-section">
       <div class="container faq-container">
         <div class="section-header">
@@ -896,7 +989,7 @@
         </div>
 
         <div class="accordion">
-          <!-- Accordion Item 1 -->
+          
           <div class="accordion-item">
             <input type="checkbox" id="faq-1" class="accordion-toggle">
             <label for="faq-1" class="accordion-header">
@@ -908,7 +1001,7 @@
             </div>
           </div>
 
-          <!-- Accordion Item 2 -->
+          
           <div class="accordion-item">
             <input type="checkbox" id="faq-2" class="accordion-toggle">
             <label for="faq-2" class="accordion-header">
@@ -920,7 +1013,7 @@
             </div>
           </div>
 
-          <!-- Accordion Item 3 -->
+          
           <div class="accordion-item">
             <input type="checkbox" id="faq-3" class="accordion-toggle">
             <label for="faq-3" class="accordion-header">
@@ -932,7 +1025,7 @@
             </div>
           </div>
 
-          <!-- Accordion Item 4 -->
+          
           <div class="accordion-item">
             <input type="checkbox" id="faq-4" class="accordion-toggle">
             <label for="faq-4" class="accordion-header">
@@ -947,25 +1040,39 @@
       </div>
     </section>
 
-    <!-- Bottom Call To Action Banner -->
+    
     <section class="cta-banner">
-      <div class="container cta-content">
-        <h2>"Góp chút nắng vàng, thắp ngàn ước mơ"</h2>
-        <p>Mỗi bàn tay đưa ra là một nụ cười nở trên môi trẻ thơ vùng cao. Hãy cùng chúng tôi xua đi cái rét buốt của mùa đông này!</p>
-        <div class="cta-btns">
-          <a href="#action-section" class="btn btn-cta-primary"><i class="fa-solid fa-heart"></i> Chung tay ngay hôm nay</a>
-          <a href="#action-section" class="btn btn-cta-secondary"><i class="fa-solid fa-user-plus"></i> Đăng ký tham gia đoàn</a>
+      <div class="cta-banner-bg" style="background-image: url('assets/images/hotrotuthien.jpg');"></div>
+      <div class="cta-banner-overlay"></div>
+      <div class="container cta-container-custom">
+        <div class="cta-content">
+          <div class="cta-badge"><i class="fa-solid fa-heart-pulse"></i> Lan tỏa yêu thương</div>
+          <h2 class="cta-title">"Góp chút nắng vàng, thắp ngàn ước mơ"</h2>
+          <p class="cta-desc">Mỗi bàn tay đưa ra là một nụ cười nở trên môi trẻ thơ vùng cao. Hãy cùng chúng tôi xua đi cái rét buốt của mùa đông này!</p>
+          <div class="cta-btns">
+            <a href="#action-section" class="btn btn-cta-primary"><i class="fa-solid fa-heart"></i> Chung tay ngay hôm nay</a>
+            <a href="#action-section" class="btn btn-cta-secondary"><i class="fa-solid fa-user-plus"></i> Đăng ký tham gia đoàn</a>
+          </div>
+        </div>
+        <div class="cta-gallery">
+          <div class="cta-img-card cta-card-main">
+            <img src="assets/images/embevungcao5.jpg" alt="Các bé nhận quà ấm áp">
+            <span class="cta-img-tag"><i class="fa-solid fa-circle-check"></i> Trao gửi yêu thương</span>
+          </div>
+          <div class="cta-img-card cta-card-sub">
+            <img src="assets/images/embevungcao7.jpg" alt="Nụ cười hồn nhiên của em bé vùng cao">
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
+  
   <footer class="footer">
     <div class="container footer-grid">
       <div class="footer-col col-brand">
         <div class="logo footer-logo">
-          <div class="logo-icon"><i class="fa-solid fa-sun"></i></div>
+          <div class="logo-icon"><img src="assets/images/logo.jpg" alt="Logo Nắng Ấm Trao Em" class="logo-img"></div>
           <div class="logo-text">
             <span class="brand-title">NẮNG ẤM TRAO EM</span>
             <span class="brand-sub">Góp chút nắng vàng, thắp ngàn ước mơ</span>
