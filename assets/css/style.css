@@ -445,6 +445,7 @@ ul {
   -webkit-text-fill-color: transparent;
   display: inline-block;
   letter-spacing: 0.02em;
+  white-space: nowrap;
 }
 
 .hero-desc {
@@ -1646,7 +1647,7 @@ ul {
 }
 
 @media (min-width: 992px) {
-  .activities-desc,
+
   .stories-desc,
   .gallery-desc {
     white-space: nowrap;
@@ -1768,12 +1769,13 @@ ul {
 
 
 .transparency-section {
-  background: #090d16;
+  position: relative;
+  background: radial-gradient(circle at 50% 10%, #1e293b 0%, #090d16 100%);
   color: #ffffff;
 }
 
 .transparency-box {
-  max-width: 1050px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -1783,7 +1785,7 @@ ul {
   align-items: flex-end;
   margin-bottom: 35px;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 24px;
 }
 
 .section-subtitle.light {
@@ -1799,74 +1801,99 @@ ul {
 }
 
 .btn-outline-white {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.05);
   color: #ffffff;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  padding: 11px 22px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  padding: 12px 24px;
   border-radius: var(--radius-full);
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   font-weight: 600;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  white-space: nowrap;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-outline-white:hover {
   background: #ffffff;
   color: #0f172a;
   border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
 }
 
 .table-responsive {
   width: 100%;
   overflow-x: auto;
-  background: #131b2e;
+  -webkit-overflow-scrolling: touch;
+  background: #111827;
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-xl);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08);
 }
 
 .saoke-table {
   width: 100%;
-  border-collapse: collapse;
+  min-width: 780px;
+  border-collapse: separate;
+  border-spacing: 0;
   text-align: left;
   font-size: 0.92rem;
 }
 
 .saoke-table th {
-  background: #1e293b;
+  background: #1f2937;
   color: #cbd5e1;
   font-weight: 700;
-  padding: 16px 20px;
-  font-size: 0.82rem;
+  padding: 18px 20px;
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
 }
 
 .saoke-table td {
   padding: 16px 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   color: #e2e8f0;
+  vertical-align: middle;
 }
 
-.saoke-table tr:hover {
-  background: rgba(255, 255, 255, 0.04);
+.saoke-table tbody tr {
+  transition: background-color 0.25s ease;
+}
+
+.saoke-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.saoke-table tbody tr:hover {
+  background-color: rgba(249, 115, 22, 0.1) !important;
+}
+
+.saoke-table tbody tr:hover td {
+  color: #ffffff;
 }
 
 .amount-plus {
   color: #34d399;
   font-weight: 700;
   font-size: 0.98rem;
+  white-space: nowrap;
 }
 
 .status-pill {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: var(--radius-full);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .status-verified {
@@ -1876,10 +1903,20 @@ ul {
 }
 
 .transparency-footer {
-  margin-top: 20px;
+  margin-top: 22px;
   text-align: center;
   font-size: 0.88rem;
   color: #94a3b8;
+}
+
+.transparency-footer p {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .text-green {
@@ -2032,11 +2069,11 @@ ul {
 .cta-banner {
   position: relative;
   overflow: hidden;
-  color: var(--text-title);
+  color: #ffffff;
   padding: 85px 0;
-  background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 45%, #fed7aa 100%);
-  border-top: 1px solid #fed7aa;
-  border-bottom: 1px solid #fdba74;
+  background-color: #1c100b;
+  border-top: 1px solid rgba(249, 115, 22, 0.35);
+  border-bottom: 1px solid rgba(249, 115, 22, 0.35);
 }
 
 .cta-banner-bg {
@@ -2044,15 +2081,18 @@ ul {
   inset: 0;
   background-size: cover;
   background-position: center;
-  opacity: 0.12;
-  mix-blend-mode: multiply;
+  opacity: 1;
   pointer-events: none;
 }
 
 .cta-banner-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 80% 40%, rgba(254, 215, 170, 0.45) 0%, rgba(255, 247, 237, 0.75) 100%);
+  /* Lớp phủ cam rất mỏng để làm nổi bật tối đa hình ảnh nền nhưng vẫn chuẩn tone cam */
+  background: linear-gradient(105deg,
+      rgba(194, 65, 12, 0.52) 0%,
+      rgba(234, 88, 12, 0.35) 45%,
+      rgba(249, 115, 22, 0.22) 100%);
   pointer-events: none;
 }
 
@@ -2073,37 +2113,37 @@ ul {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(249, 115, 22, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 6px 14px;
   border-radius: var(--radius-full);
   font-size: 0.85rem;
   font-weight: 700;
-  color: #c2410c;
+  color: #fff;
   margin-bottom: 16px;
   letter-spacing: 0.02em;
-  box-shadow: 0 2px 8px rgba(234, 88, 12, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .cta-title {
-  font-size: clamp(1.8rem, 2.8vw, 2.7rem);
+  font-size: clamp(1.4rem, 2.3vw, 2.4rem);
   font-weight: 800;
   margin-bottom: 16px;
   letter-spacing: -0.02em;
   white-space: nowrap;
-  color: #7c2d12;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .cta-desc {
   font-size: 1.1rem;
-  color: #431407;
-  opacity: 0.88;
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: 32px;
   line-height: 1.7;
   max-width: 620px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
 }
 
 .cta-btns {
@@ -2118,34 +2158,32 @@ ul {
   color: #ffffff;
   font-weight: 800;
   border: none;
-  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.28);
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.45);
 }
 
 .btn-cta-primary:hover {
   transform: translateY(-2px);
   background: linear-gradient(135deg, #ea580c, #c2410c);
-  box-shadow: 0 10px 24px rgba(234, 88, 12, 0.38);
+  box-shadow: 0 10px 24px rgba(234, 88, 12, 0.55);
   color: #ffffff;
 }
 
 .btn-cta-secondary {
-  background: #ffffff;
-  color: #9a3412;
-  border: 1.5px solid #fdba74;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(154, 52, 18, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
 }
 
 .btn-cta-secondary:hover {
-  background: #fff7ed;
-  border-color: #ea580c;
-  color: #7c2d12;
-  transform: translateY(-2px);
-}
-
-.btn-cta-secondary:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: #ffffff;
   border-color: #ffffff;
+  color: #c2410c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.3);
 }
 
 /* Gallery Images Card on the right of CTA banner */
@@ -2558,4 +2596,725 @@ ul {
     padding: 11px 20px;
     font-size: 0.9rem;
   }
+}
+
+/* ==========================================================================
+   GLOBAL SCROLL & HOVER ANIMATIONS (HIỆU ỨNG ĐỘNG TOÀN DIỆN CHO WEBSITE)
+   ========================================================================== */
+
+/* 1. Keyframe Definitions */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 10px 25px rgba(234, 88, 12, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 16px 36px rgba(234, 88, 12, 0.7), 0 0 24px rgba(249, 115, 22, 0.6);
+  }
+}
+
+@keyframes floatGentle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmerEffect {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes heartBeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.22);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.22);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}
+
+/* 2. Scroll Reveal Utility Classes (Tự động chạy lại siêu mượt mà khi lăn lên và lăn xuống) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(28px);
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger delay classes for cards in grid (Độ trễ mượt mà) */
+.delay-1 {
+  transition-delay: 0.08s !important;
+}
+
+.delay-2 {
+  transition-delay: 0.16s !important;
+}
+
+.delay-3 {
+  transition-delay: 0.24s !important;
+}
+
+.delay-4 {
+  transition-delay: 0.32s !important;
+}
+
+/* 3. Hero Entrance Animations */
+.hero-content {
+  animation: fadeInLeft 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-visual {
+  animation: fadeInRight 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+}
+
+/* 4. Pulsing Floating CTA & Heart Icons */
+.floating-cta {
+  animation: pulseGlow 2.8s infinite ease-in-out;
+}
+
+.floating-cta .fa-heart,
+.btn-primary .fa-heart,
+.btn-cta-primary .fa-heart {
+  animation: heartBeat 2.2s infinite ease-in-out;
+  display: inline-block;
+}
+
+/* 5. Metrics Section Interactive Animations */
+.metric-item {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metric-item:hover {
+  transform: translateY(-6px);
+}
+
+.metric-item .metric-icon {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease;
+}
+
+.metric-item:hover .metric-icon {
+  transform: scale(1.15) rotate(8deg);
+  background: linear-gradient(135deg, #fff7ed, #ffedd5);
+  box-shadow: 0 8px 18px rgba(249, 115, 22, 0.2);
+}
+
+/* 6. Enhanced Micro-Interactions on Cards & Buttons */
+.about-card,
+.activity-card,
+.gallery-card,
+.testimonial-card,
+.qr-card,
+.trip-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 36px -6px rgba(15, 23, 42, 0.12);
+  border-color: #fdba74;
+}
+
+.testimonial-card .quote-icon {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.testimonial-card:hover .quote-icon {
+  transform: scale(1.15) rotate(-6deg);
+  color: #ea580c;
+}
+
+/* Shine effect on primary buttons */
+.btn-primary,
+.nav-btn-primary,
+.btn-cta-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after,
+.nav-btn-primary::after,
+.btn-cta-primary::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(60deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      rgba(255, 255, 255, 0) 100%);
+  transform: rotate(25deg);
+  transition: all 0.75s ease;
+  pointer-events: none;
+}
+
+.btn-primary:hover::after,
+.nav-btn-primary:hover::after,
+.btn-cta-primary:hover::after {
+  left: 130%;
+}
+
+/* Progress bar dynamic loading effect */
+.progress-fill {
+  background-size: 200% 100%;
+  background-image: linear-gradient(90deg,
+      #ea580c 0%,
+      #f59e0b 50%,
+      #ea580c 100%);
+  animation: shimmerEffect 3s infinite linear;
+}
+
+/* Sticky Header Soft Shadow on Scroll */
+.header.is-scrolled {
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* Accordion Smooth Transition */
+.accordion-header {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.accordion-header:hover {
+  background-color: #fff7ed;
+  color: #ea580c;
+}
+
+.accordion-arrow {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.accordion-toggle:checked+.accordion-header .accordion-arrow {
+  transform: rotate(180deg);
+  color: #ea580c;
+}
+
+/* ==========================================================================
+   NEXT-LEVEL VISUAL & INTERACTIVE EFFECTS
+   ========================================================================== */
+
+/* 1. Global Scroll Progress Indicator */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, #ea580c 0%, #f59e0b 50%, #f97316 100%);
+  z-index: 10000;
+  width: 0%;
+  transition: width 0.1s cubic-bezier(0.1, 0.9, 0.2, 1);
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.8), 0 0 4px rgba(234, 88, 12, 0.9);
+}
+
+/* 2. Floating Sunshine Ambient Glow (Hiệu ứng đốm nắng lung linh trên toàn trang) */
+.sunshine-ambient {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+  mix-blend-mode: multiply;
+  animation: floatAmbient 12s infinite alternate ease-in-out;
+}
+
+.sunshine-1 {
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(254, 215, 170, 0.85) 0%, rgba(251, 146, 60, 0) 70%);
+  top: 15%;
+  left: -80px;
+}
+
+.sunshine-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(253, 186, 116, 0.75) 0%, rgba(234, 88, 12, 0) 70%);
+  bottom: 20%;
+  right: -100px;
+  animation-duration: 16s;
+  animation-delay: -5s;
+}
+
+@keyframes floatAmbient {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(45px, 35px) scale(1.12);
+  }
+
+  100% {
+    transform: translate(-30px, 60px) scale(0.92);
+  }
+}
+
+/* 3. Interactive 3D Tilt Perspective & Cursor Spotlight on Cards */
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+  will-change: transform;
+}
+
+/* Spotlight radial highlight that follows cursor on hover */
+.tilt-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(600px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+      rgba(249, 115, 22, 0.12),
+      transparent 40%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 5;
+}
+
+.tilt-card:hover::before {
+  opacity: 1;
+}
+
+/* 4. Canvas Floating Warm Particles (Đốm nắng vàng bay lơ lửng) */
+#warmParticlesCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 5. Smooth Back to Top Button */
+.back-to-top {
+  position: fixed;
+  bottom: 95px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #ea580c;
+  border: 1.5px solid rgba(249, 115, 22, 0.25);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  cursor: pointer;
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: linear-gradient(135deg, #ea580c, #f97316);
+  color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(234, 88, 12, 0.35);
+  border-color: transparent;
+}
+
+/* 6. Ripple click wave on buttons */
+.btn,
+.nav-btn,
+.top-bar-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-wave {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background: rgba(255, 255, 255, 0.45);
+  animation: rippleAnimation 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleAnimation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* 7. Image Glow & Floating Badges */
+.card-media,
+.gallery-thumb,
+.hero-slide-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-media::after,
+.gallery-thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.45) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+.gallery-card:hover .gallery-thumb::after,
+.activity-card:hover .card-media::after {
+  opacity: 1;
+}
+
+/* 8. Click Fireworks / Particle Explosion Canvas */
+#clickParticlesCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+}
+
+/* ==========================================================================
+   EXCLUSIVE SECTION-SPECIFIC LUXURY EFFECTS (HIỆU ỨNG RIÊNG TỪNG KHU VỰC)
+   ========================================================================== */
+
+/* --- 1. HERO SECTION: Lớp hạt sao phát sáng & Floating Badge 3D --- */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .badge {
+  box-shadow: 0 4px 15px rgba(249, 115, 22, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero .badge:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(249, 115, 22, 0.3);
+}
+
+.hero-slider-container {
+  box-shadow: 0 20px 45px -10px rgba(234, 88, 12, 0.22), 0 10px 20px -5px rgba(15, 23, 42, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-slider-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 55px -12px rgba(234, 88, 12, 0.32), 0 12px 24px -5px rgba(15, 23, 42, 0.12);
+}
+
+/* --- 2. METRICS BAR: Viền gradient ánh kim & Counter Pop --- */
+.metrics-bar {
+  background: linear-gradient(180deg, #ffffff 0%, #fffbf5 100%);
+  position: relative;
+  box-shadow: 0 4px 20px rgba(234, 88, 12, 0.05);
+}
+
+.metric-number {
+  background: linear-gradient(135deg, #ea580c 0%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.metric-item:hover .metric-number {
+  transform: scale(1.08);
+}
+
+/* --- 3. ABOUT SECTION: Thẻ nổi kính mờ & Icon Glow phóng đại --- */
+.about-section {
+  position: relative;
+}
+
+.about-card {
+  position: relative;
+  background: #ffffff;
+}
+
+.about-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3.5px;
+  background: linear-gradient(90deg, #ea580c, #f59e0b);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: left;
+}
+
+.about-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* --- 4. GALLERY ALBUM: Zoom Lens nghệ thuật & Badge xuất hiện mượt mà --- */
+.gallery-card {
+  position: relative;
+}
+
+.gallery-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-thumb::before {
+  content: "\f00e";
+  /* FontAwesome search-plus icon */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.4);
+  font-size: 1.8rem;
+  color: #ffffff;
+  z-index: 4;
+  opacity: 0;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+  pointer-events: none;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.gallery-card:hover .gallery-thumb::before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.gallery-card:hover .gallery-badge {
+  transform: translateY(-2px);
+  background: #ea580c;
+  color: #ffffff;
+}
+
+/* --- 5. ACTION TABS & FORM: Viền sáng chuyển động & Input Focus Glow --- */
+.action-box {
+  transition: box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.action-box:hover {
+  box-shadow: 0 25px 50px -12px rgba(234, 88, 12, 0.18), 0 0 0 1px rgba(249, 115, 22, 0.2);
+}
+
+.tab-label {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.form-control:focus {
+  border-color: #ea580c;
+  box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.15);
+  transform: translateY(-1px);
+}
+
+.qr-card {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.qr-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 22px 40px -10px rgba(234, 88, 12, 0.2);
+}
+
+.qr-image img {
+  transition: transform 0.5s ease;
+}
+
+.qr-card:hover .qr-image img {
+  transform: scale(1.04);
+}
+
+/* --- 6. ACTIVITIES (CHƯƠNG TRÌNH TRỌNG TÂM): Thanh tiến độ sống động --- */
+.activity-card {
+  position: relative;
+}
+
+.activity-card:hover .card-title {
+  color: #ea580c;
+  transition: color 0.3s ease;
+}
+
+/* --- 7. TRANSPARENCY SECTION (SAO KÊ MINH BẠCH) --- */
+.saoke-table tbody tr {
+  transition: background-color 0.25s ease;
+}
+
+.saoke-table tbody tr:hover {
+  background-color: rgba(249, 115, 22, 0.12) !important;
+}
+
+.saoke-table tbody tr:hover td {
+  color: #ffffff;
+}
+
+/* --- 8. TESTIMONIALS (CÂU CHUYỆN): Thẻ vòm ấm áp & Avatar quay nhẹ --- */
+.testimonial-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+}
+
+.testimonial-card:hover {
+  border-color: #fdba74;
+  background: linear-gradient(180deg, #ffffff 0%, #fffaf5 100%);
+}
+
+.testimonial-author .author-avatar {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.testimonial-card:hover .author-avatar {
+  transform: scale(1.12) rotate(6deg);
+  border-color: #ea580c;
+}
+
+/* --- 9. FAQ ACCORDION: Hiệu ứng mở phồng mềm mại --- */
+.accordion-item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 14px;
+}
+
+.accordion-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+}
+
+/* --- 10. FOOTER: Social icons xoay 360 độ & Link gạch chân động --- */
+.social-icon {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: translateY(-4px) rotate(360deg);
+  background: #ea580c;
+  color: #ffffff;
+}
+
+.footer-links a {
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease, transform 0.25s ease;
+}
+
+.footer-links a:hover {
+  color: #f97316;
+  transform: translateX(6px);
 }
