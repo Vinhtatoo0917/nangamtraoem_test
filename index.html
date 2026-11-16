@@ -12,9 +12,14 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <!-- Three.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
+
+  <!-- Three.js 3D Golden Warm Sun & Heart Particles Canvas -->
+  <div id="threeSunCanvasContainer"></div>
 
   <!-- Thanh hiển thị tiến độ cuộn trang (Scroll Progress Bar) -->
   <div class="scroll-progress-bar" id="scrollProgressBar"></div>
@@ -299,25 +304,71 @@
         </div>
 
         <div class="about-grid">
-          <div class="about-card">
-            <div class="card-icon"><i class="fa-solid fa-snowflake"></i></div>
-            <h3>Mùa đông buốt giá</h3>
-            <p>Nhiều điểm trường nằm trên đỉnh núi đá cằn cỗi, gió lùa tứ phía, thiếu thốn chăn màn, áo khoác ấm và giày
-              ủng chống lạnh.</p>
+          <div class="about-card clickable-story-card" data-story-title="Mùa đông buốt giá trên những triền núi đá"
+            data-story-category="Khó khăn vùng cao" data-story-location="Bản Sín Chải, Điện Biên"
+            data-story-img="assets/images/embevungcao4.jpg"
+            data-story-desc="Mùa đông ở vùng núi cao phía Bắc thường xuyên chạm ngưỡng dưới 5 độ C, sương muối phủ trắng những mái nhà vách nứa. Nhiều em nhỏ chỉ có manh áo cộc sờn rách, đôi bàn chân trần nứt nẻ vì rét buốt rớm máu trên những tảng đá nhọn. Đợt rét kéo dài khiến việc sinh hoạt và đến trường của các em trở thành một thử thách khắc nghiệt."
+            data-story-quote="Chỉ một chiếc áo ấm 3 lớp và một đôi ủng len cũng đủ thắp lên niềm hy vọng, giữ ấm trái tim và bước chân các em nhỏ suốt những tháng ngày mùa đông lạnh giá."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
+            <div class="about-card-img-wrapper">
+              <img src="assets/images/embevungcao4.jpg" alt="Mùa đông buốt giá vùng cao" class="about-card-img">
+              <span class="about-pill pill-cold"><i class="fa-solid fa-temperature-arrow-down"></i> Dưới 5°C buốt
+                giá</span>
+              <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chuyện</span>
+            </div>
+            <div class="about-card-body">
+              <div class="card-icon"><i class="fa-solid fa-snowflake"></i></div>
+              <h3>Mùa đông buốt giá</h3>
+              <p>Nhiều điểm trường nằm trên đỉnh núi đá cằn cỗi, gió lùa tứ phía, thiếu thốn chăn màn, áo khoác ấm và
+                giày ủng chống lạnh.</p>
+              <div class="about-card-footer">
+                <span class="about-highlight-tag"><i class="fa-solid fa-wind"></i> Gió buốt & Sương muối</span>
+              </div>
+            </div>
           </div>
 
-          <div class="about-card">
-            <div class="card-icon"><i class="fa-solid fa-bowl-rice"></i></div>
-            <h3>Bữa cơm chỉ có măng ớt</h3>
-            <p>Bữa trưa của các em thường chỉ là nắm cơm nguội chan nước lã hoặc chút măng rừng luộc, thiếu trầm trọng
-              đạm và chất dinh dưỡng.</p>
+          <div class="about-card clickable-story-card" data-story-title="Bữa cơm đạm bạc chỉ có măng rừng và muối ớt"
+            data-story-category="Dinh dưỡng trẻ thơ" data-story-location="Điểm trường Xín Mần, Hà Giang"
+            data-story-img="assets/images/embevungcao2.jpg"
+            data-story-desc="Bữa trưa đến trường của các em nhỏ thường gói trong chiếc túi ni-lông nhỏ: một nắm cơm nguội đã khô cứng cùng vài miếng măng rừng luộc hoặc chút muối ớt giã dập. Nhiều hôm không có thức ăn, các em chan nước lã vào bát để dễ nuốt. Dinh dưỡng thiếu thốn khiến vóc dáng các em nhỏ bé hơn rất nhiều so với bạn bè cùng trang lứa dưới xuôi."
+            data-story-quote="Chúng tôi mong muốn mỗi bữa trưa của các em đều có cơm nóng, canh ngọt, thịt và trứng, để tiếng cười luôn đọng lại sau mỗi buổi tan trường."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
+            <div class="about-card-img-wrapper">
+              <img src="assets/images/embevungcao2.jpg" alt="Bữa cơm đạm bạc của các bé" class="about-card-img">
+              <span class="about-pill pill-food"><i class="fa-solid fa-bowl-food"></i> Cơm trắng chan nước lã</span>
+              <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chuyện</span>
+            </div>
+            <div class="about-card-body">
+              <div class="card-icon"><i class="fa-solid fa-bowl-rice"></i></div>
+              <h3>Bữa cơm chỉ có măng ớt</h3>
+              <p>Bữa trưa của các em thường chỉ là nắm cơm nguội chan nước lã hoặc chút măng rừng luộc, thiếu trầm trọng
+                đạm và chất dinh dưỡng.</p>
+              <div class="about-card-footer">
+                <span class="about-highlight-tag"><i class="fa-solid fa-heart-crack"></i> Thiếu hụt dinh dưỡng</span>
+              </div>
+            </div>
           </div>
 
-          <div class="about-card">
-            <div class="card-icon"><i class="fa-solid fa-book-open-reader"></i></div>
-            <h3>Con đường tìm con chữ</h3>
-            <p>Hàng ngày đi bộ 5 - 10km đường đèo trơn trượt để đến trường. Ước mơ của các em là có được sách giáo khoa,
-              bút mực và phòng học vững chãi.</p>
+          <div class="about-card clickable-story-card" data-story-title="Con đường tìm con chữ vượt đèo lội suối"
+            data-story-category="Nghị lực đến trường" data-story-location="Bản Mèo Vạc, Hà Giang"
+            data-story-img="assets/images/embevungcao5.jpg"
+            data-story-desc="Để đến được lớp học mầm non và tiểu học, nhiều em nhỏ 5-6 tuổi phải thức dậy từ 5 giờ sáng khi sương mù còn giăng kín đỉnh núi, tự mình đi bộ từ 5 đến 10 cây số đường đèo trơn trượt. Dẫu đường xa hiểm trở và bàn chân mỏi nhừ, ánh mắt các em vẫn luôn rực sáng niềm khao khát được học con chữ, được nghe thầy cô giảng bài."
+            data-story-quote="Sách vở, cặp sách mới và những phòng học kiên cố không chỉ che chắn gió mưa, mà còn nâng đỡ những ước mơ bay xa khỏi thung lũng đá."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
+            <div class="about-card-img-wrapper">
+              <img src="assets/images/embevungcao5.jpg" alt="Hành trình tìm con chữ của em thơ" class="about-card-img">
+              <span class="about-pill pill-school"><i class="fa-solid fa-person-walking"></i> 5 - 10km đường đèo</span>
+              <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chuyện</span>
+            </div>
+            <div class="about-card-body">
+              <div class="card-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+              <h3>Con đường tìm con chữ</h3>
+              <p>Hàng ngày đi bộ 5 - 10km đường đèo trơn trượt để đến trường. Ước mơ của các em là có được sách giáo
+                khoa, bút mực và phòng học vững chãi.</p>
+              <div class="about-card-footer">
+                <span class="about-highlight-tag"><i class="fa-solid fa-graduation-cap"></i> Khát khao tri thức</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -329,12 +380,18 @@
         <div class="section-header">
           <span class="section-subtitle highlight-badge">Khoảnh Khắc Vùng Cao</span>
           <h2 class="section-title">Album: Ánh Mắt & Nụ Cười Các Bé</h2>
-          <p class="section-desc gallery-desc">Mỗi bức ảnh là một mảnh ghép chân thực về cuộc sống, sự ngây thơ và nghị lực vượt khó tìm con chữ của các em nhỏ nơi bản xa.</p>
+          <p class="section-desc gallery-desc">Mỗi bức ảnh là một mảnh ghép chân thực về cuộc sống, sự ngây thơ và nghị
+            lực vượt khó tìm con chữ của các em nhỏ nơi bản xa.</p>
         </div>
 
         <div class="gallery-grid">
 
-          <div class="gallery-card">
+          <div class="gallery-card clickable-story-card" data-story-title="Nụ cười chào mùa đông của bé gái Xín Mần"
+            data-story-category="Khoảnh khắc vùng cao" data-story-location="Xín Mần, Hà Giang"
+            data-story-img="assets/images/embevungcao.jpg"
+            data-story-desc="Giữa tiết trời buốt giá của rẻo cao Xín Mần, em bé xuất hiện với đôi mắt to tròn, đen láy và nụ cười sáng bừng. Dù cuộc sống còn muôn vàn thiếu thốn, manh áo chưa đủ ấm trước những cơn gió bấc, sự lạc quan và nét hồn nhiên của em đã sưởi ấm trái tim của tất cả các thành viên trong đoàn thiện nguyện."
+            data-story-quote="Nụ cười của em là động lực lớn nhất để chúng tôi tiếp tục hành trình mang thêm nhiều tấm áo ấm đến với các bản làng xa xôi."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao.jpg" alt="Bé gái vùng cao với đôi mắt sáng ngời" class="gallery-img"
                 loading="lazy">
@@ -342,12 +399,18 @@
                 <span class="gallery-tag">Xín Mần, Hà Giang</span>
                 <h4 class="gallery-name">Nụ cười chào mùa đông</h4>
                 <p class="gallery-caption">Đôi mắt trong veo ánh lên niềm tin và sự ấm áp giữa mùa sương muối.</p>
+                <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
               </div>
             </div>
           </div>
 
 
-          <div class="gallery-card">
+          <div class="gallery-card clickable-story-card"
+            data-story-title="Chiếc áo ấm mới và bước chân hân hoan đến trường" data-story-category="Đông Ấm Cho Em"
+            data-story-location="Lũng Cú, Hà Giang" data-story-img="assets/images/embevungcao1.jpg"
+            data-story-desc="Ngày nhận được chiếc áo phao đỏ dày dặn từ đoàn tình nguyện, em ôm chặt chiếc áo vào lòng như một món báu vật. Mùa đông năm nay, em không còn phải co ro vì những cơn gió lạnh thấu xương lùa qua kẽ nứa nơi lớp học vùng biên cương cực Bắc của Tổ quốc."
+            data-story-quote="Món quà không chỉ là một chiếc áo ấm, mà là thông điệp yêu thương từ hàng ngàn trái tim dưới xuôi gửi gắm tới các em nhỏ vùng cao."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao1.jpg" alt="Em bé với chiếc áo ấm mới" class="gallery-img"
                 loading="lazy">
@@ -356,12 +419,18 @@
                 <h4 class="gallery-name">Áo mới đến trường</h4>
                 <p class="gallery-caption">Niềm vui giản dị khi mùa đông này em không còn phải chịu những cơn gió lùa
                   tím tái.</p>
+                <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
               </div>
             </div>
           </div>
 
 
-          <div class="gallery-card">
+          <div class="gallery-card clickable-story-card" data-story-title="Nét đẹp ngây thơ giữa đại ngàn Mường Nhé"
+            data-story-category="Tuổi thơ rẻo cao" data-story-location="Mường Nhé, Điện Biên"
+            data-story-img="assets/images/embevungcao2.jpg"
+            data-story-desc="Ở ngã ba biên giới Mường Nhé mù sương, những đứa trẻ lớn lên cùng nương ngô và đồi cỏ dại. Dẫu cuộc sống muôn vàn khó nhọc, các em vẫn giữ trọn vẹn nét hồn nhiên, đôi mắt trong veo không chút vướng bận ưu phiền."
+            data-story-quote="Giữ gìn sự trong sáng và nuôi dưỡng ước mơ của các em chính là sứ mệnh mà dự án luôn bền bỉ theo đuổi."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao2.jpg" alt="Nụ cười hồn nhiên của em bé bản xa" class="gallery-img"
                 loading="lazy">
@@ -369,12 +438,18 @@
                 <span class="gallery-tag">Mường Nhé, Điện Biên</span>
                 <h4 class="gallery-name">Nét đẹp ngây thơ</h4>
                 <p class="gallery-caption">Những nụ cười hồn nhiên xua tan đi cái lạnh căm của núi rừng Tây Bắc.</p>
+                <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
               </div>
             </div>
           </div>
 
 
-          <div class="gallery-card">
+          <div class="gallery-card clickable-story-card" data-story-title="Ánh mắt ước mơ nơi đỉnh mây Tà Xùa"
+            data-story-category="Nghị lực đến trường" data-story-location="Bắc Yên, Sơn La"
+            data-story-img="assets/images/embevungcao3.jpg"
+            data-story-desc="Trên những triền núi quanh năm mây mù bao phủ ở Bắc Yên, cậu bé người Mông chia sẻ ước mơ mai này được trở thành thầy giáo để trở về dạy chữ cho các em nhỏ trong bản. Ánh mắt kiên định của em như ngọn lửa soi sáng con đường vượt dốc tìm tri thức."
+            data-story-quote="Mỗi cuốn vở, chiếc bút trao đi hôm nay là hạt mầm cho tương lai tươi sáng của cả bản làng ngày mai."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao3.jpg" alt="Ánh mắt trong trẻo thơ ngây" class="gallery-img"
                 loading="lazy">
@@ -383,12 +458,18 @@
                 <h4 class="gallery-name">Ánh mắt ước mơ</h4>
                 <p class="gallery-caption">Ánh nhìn tràn đầy hy vọng về một tương lai có sách vở và lớp học khang trang.
                 </p>
+                <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
               </div>
             </div>
           </div>
 
 
-          <div class="gallery-card">
+          <div class="gallery-card clickable-story-card" data-story-title="Hơi ấm yêu thương từ chiếc khăn len đan tay"
+            data-story-category="Tình nguyện kết nối" data-story-location="Sìn Hồ, Lai Châu"
+            data-story-img="assets/images/embevungcao4.jpg"
+            data-story-desc="Chiếc mũ len và tấm khăn choàng ấm áp do chính tay các bạn trẻ tình nguyện viên thức đêm đan từng mũi len tỉ mẩn. Khi được quàng lên cổ, gương mặt bé ửng hồng vì ấm áp và nở nụ cười bẽn lẽn đáng yêu."
+            data-story-quote="Hơi ấm tình người có sức mạnh xua tan cái rét cắt da cắt thịt của mùa đông Tây Bắc."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao4.jpg" alt="Em bé vùng cao ấm áp trong khăn len" class="gallery-img"
                 loading="lazy">
@@ -396,12 +477,18 @@
                 <span class="gallery-tag">Sìn Hồ, Lai Châu</span>
                 <h4 class="gallery-name">Hơi ấm yêu thương</h4>
                 <p class="gallery-caption">Chiếc mũ len và tấm khăn do các tình nguyện viên tự tay đan tặng bé.</p>
+                <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
               </div>
             </div>
           </div>
 
 
-          <div class="gallery-card">
+          <div class="gallery-card clickable-story-card" data-story-title="Những bước chân không mỏi trên đèo Mèo Vạc"
+            data-story-category="Khát khao con chữ" data-story-location="Mèo Vạc, Hà Giang"
+            data-story-img="assets/images/embevungcao5.jpg"
+            data-story-desc="Vượt qua những con dốc đá tai mèo lởm chởm, con đường từ nhà đến trường của các em dài dằng dặc. Dù mồ hôi ướt đẫm lưng áo giữa trời đông giá, các em vẫn hối hả rảo bước để không bị muộn giờ học sáng."
+            data-story-quote="Ý chí phi thường của những đứa trẻ vùng cao là bài học sâu sắc về tinh thần vượt khó cho tất cả chúng ta."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao5.jpg" alt="Những bước chân tìm con chữ" class="gallery-img"
                 loading="lazy">
@@ -409,12 +496,18 @@
                 <span class="gallery-tag">Mèo Vạc, Hà Giang</span>
                 <h4 class="gallery-name">Đường đến trường</h4>
                 <p class="gallery-caption">Vượt dốc đá tai mèo mỗi sớm mai, nụ cười vẫn nở bừng rạng rỡ trên môi em.</p>
+                <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
               </div>
             </div>
           </div>
 
 
-          <div class="gallery-card">
+          <div class="gallery-card clickable-story-card" data-story-title="Món quà nhỏ mang lại niềm vui bất tận"
+            data-story-category="Góc hạnh phúc" data-story-location="Tà Xùa, Sơn La"
+            data-story-img="assets/images/embevungcao6.jpg"
+            data-story-desc="Hộp sữa tươi, chiếc bánh xốp và túi thạch hoa quả tưởng chừng rất bình thường ở thành phố, nhưng với các em bé ở Tà Xùa lại là món quà xa xỉ chỉ có trong mơ. Niềm hạnh phúc rạng ngời khi em chia đôi chiếc bánh cho bạn cùng ăn."
+            data-story-quote="Cho đi hạnh phúc là nhận lại bình yên. Niềm vui của các em nhỏ làm ấm lòng tất cả những ai có mặt."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao6.jpg" alt="Khoảnh khắc bé nhận quà thiện nguyện" class="gallery-img"
                 loading="lazy">
@@ -422,12 +515,18 @@
                 <span class="gallery-tag">Tà Xùa, Sơn La</span>
                 <h4 class="gallery-name">Món quà nhỏ - Niềm vui lớn</h4>
                 <p class="gallery-caption">Cầm trên tay hộp sữa và chiếc bánh nhỏ, ánh mắt em sáng ngời niềm vui.</p>
+                <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
               </div>
             </div>
           </div>
 
 
-          <div class="gallery-card">
+          <div class="gallery-card clickable-story-card" data-story-title="Bông hoa rừng nở rộ giữa sườn núi Sín Chải"
+            data-story-category="Nụ cười trẻ thơ" data-story-location="Sín Chải, Điện Biên"
+            data-story-img="assets/images/embevungcao7.jpg"
+            data-story-desc="Bé gái người Mông với hai má ửng hồng vì gió núi. Nụ cười thuần khiết, trong veo không chút ưu phiền tựa như đóa hoa đỗ quyên bung nở rực rỡ giữa núi rừng Tây Bắc hiểm trở."
+            data-story-quote="Chúng tôi nguyện là những giọt nắng ấm sưởi ấm cho những đóa hoa rừng luôn ngát hương."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao7.jpg" alt="Gương mặt đáng yêu của bé gái vùng cao" class="gallery-img"
                 loading="lazy">
@@ -435,12 +534,18 @@
                 <span class="gallery-tag">Sín Chải, Điện Biên</span>
                 <h4 class="gallery-name">Bông hoa rừng Tây Bắc</h4>
                 <p class="gallery-caption">Vẻ đẹp mộc mạc, bình dị như những đóa hoa đào chớm nở trên sườn núi.</p>
+                <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
               </div>
             </div>
           </div>
 
 
-          <div class="gallery-card">
+          <div class="gallery-card clickable-story-card"
+            data-story-title="Tình chị em cảm động cõng nhau đi tìm con chữ" data-story-category="Tình thân vùng cao"
+            data-story-location="Y Tý, Lào Cai" data-story-img="assets/images/embevungcao8.jpg"
+            data-story-desc="Cha mẹ bận lên nương từ sáng sớm, cô chị 8 tuổi địu đứa em nhỏ 3 tuổi trên lưng vượt qua con đường dốc đất đỏ trơn trượt để cùng đến trường. Ở lớp học, cô chị vừa chăm chú nghe giảng, vừa dỗ em ngủ say sưa trên lưng áo."
+            data-story-quote="Tình thương mộc mạc của hai chị em đã làm xúc động hàng triệu trái tim đồng hành cùng dự án."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao8.jpg" alt="Hai chị em vùng cao chăm nhau" class="gallery-img"
                 loading="lazy">
@@ -448,12 +553,18 @@
                 <span class="gallery-tag">Y Tý, Lào Cai</span>
                 <h4 class="gallery-name">Tình thương cõng em</h4>
                 <p class="gallery-caption">Chị cõng em trên lưng đến lớp học mầm non, tình thân ấm áp giữa núi rừng.</p>
+                <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
               </div>
             </div>
           </div>
 
 
-          <div class="gallery-card">
+          <div class="gallery-card clickable-story-card"
+            data-story-title="Tia nắng vàng ấm áp trên cao nguyên đá Đồng Văn" data-story-category="Khoảnh khắc diệu kỳ"
+            data-story-location="Đồng Văn, Hà Giang" data-story-img="assets/images/embevungcao9.jpg"
+            data-story-desc="Trên cao nguyên đá xám ngắt cằn cỗi, tiếng cười giòn tan của các em bé khi cùng chơi trò ném pao đã xua tan đi cái buốt giá cắt da cắt thịt. Những nụ cười tươi rói là minh chứng cho sức sống mãnh liệt của con người nơi đây."
+            data-story-quote="Dẫu sống giữa sỏi đá khắc nghiệt, tình yêu thương và nụ cười vẫn luôn đâm chồi nảy lộc."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao9.jpg" alt="Nụ cười trong veo của em nhỏ" class="gallery-img"
                 loading="lazy">
@@ -461,12 +572,18 @@
                 <span class="gallery-tag">Đồng Văn, Hà Giang</span>
                 <h4 class="gallery-name">Nắng trên bản cao</h4>
                 <p class="gallery-caption">Nụ cười giòn tan xua tan mọi giá lạnh mùa đông vùng cao nguyên đá.</p>
+                <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
               </div>
             </div>
           </div>
 
 
-          <div class="gallery-card">
+          <div class="gallery-card clickable-story-card"
+            data-story-title="Ước mơ tới trường nơi ngã ba biên giới Mường Tè" data-story-category="Ước mơ trẻ thơ"
+            data-story-location="Mường Tè, Lai Châu" data-story-img="assets/images/embevungcao10.jpg"
+            data-story-desc="Cậu bé người La Hủ say sưa lật từng trang sách giáo khoa mới được trao tặng. Em khoe với các cô chú tình nguyện viên: 'Cháu thích học toán lắm, sau này cháu muốn làm bác sĩ để chữa bệnh cho bà con trong bản'."
+            data-story-quote="Mỗi giấc mơ của các em xứng đáng được chắp cánh và chở che bằng tất cả sự tận tâm của cộng đồng."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao10.jpg" alt="Ánh mắt chân chất của cậu bé bản xa" class="gallery-img"
                 loading="lazy">
@@ -475,12 +592,18 @@
                 <h4 class="gallery-name">Ước mơ tới trường</h4>
                 <p class="gallery-caption">Khao khát được học con chữ để mai này góp sức xây dựng bản làng tươi đẹp hơn.
                 </p>
+                <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
               </div>
             </div>
           </div>
 
 
-          <div class="gallery-card">
+          <div class="gallery-card clickable-story-card" data-story-title="Cái nắm tay ấm áp giữa núi rừng Trạm Tấu"
+            data-story-category="Kết nối trái tim" data-story-location="Trạm Tấu, Yên Bái"
+            data-story-img="assets/images/embevungcao11.jpg"
+            data-story-desc="Giờ phút chia tay sau 4 ngày đồng hành sửa sang điểm trường, các em nhỏ bịn rịn nắm chặt tay các anh chị tình nguyện viên không muốn rời xa. Những giọt nước mắt hạnh phúc và lời hứa mùa đông năm sau lại về đã khắc sâu vào ký ức của mỗi người."
+            data-story-quote="Khoảng cách địa lý hàng trăm cây số bị xóa nhòa khi những trái tim biết đồng cảm và cùng chung một nhịp đập yêu thương."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="gallery-img-wrapper">
               <img src="assets/images/embevungcao11.jpg" alt="Khoảnh khắc xúc động cùng tình nguyện viên"
                 class="gallery-img" loading="lazy">
@@ -489,6 +612,7 @@
                 <h4 class="gallery-name">Vòng tay ấm áp</h4>
                 <p class="gallery-caption">Sự kết nối yêu thương giữa các tình nguyện viên và đồng bào miền núi xa xôi.
                 </p>
+                <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
               </div>
             </div>
           </div>
@@ -798,55 +922,65 @@
 
               <div class="volunteer-info-wrapper">
                 <div class="trip-card">
+                  <div class="trip-image-banner">
+                    <img src="assets/images/embevungcao11.jpg" alt="Chuyến đi thiện nguyện vùng cao"
+                      class="trip-banner-img">
+                    <div class="trip-image-overlay">
+                      <span class="trip-tag"><i class="fa-solid fa-compass fa-spin"></i> Hành trình sắp diễn ra</span>
+                    </div>
+                  </div>
                   <div class="trip-header">
-                    <span class="trip-tag">Hành trình sắp diễn ra</span>
                     <h4>Chuyến Đi: Hà Giang - Nắng Vàng Trên Bản Cao</h4>
                     <div class="trip-meta">
-                      <span><i class="fa-regular fa-calendar"></i> 4 Ngày 3 Đêm</span>
-                      <span><i class="fa-solid fa-users"></i> Dự kiến: 25 TNV</span>
+                      <span><i class="fa-regular fa-calendar-check"></i> 4 Ngày 3 Đêm</span>
+                      <span><i class="fa-solid fa-users-gear"></i> Dự kiến: 25 TNV</span>
+                      <span><i class="fa-solid fa-mountain-sun"></i> Điểm cao 1.600m</span>
                     </div>
                   </div>
 
                   <div class="trip-timeline">
                     <div class="timeline-step">
-                      <div class="timeline-dot">1</div>
+                      <div class="timeline-dot"><i class="fa-solid fa-van-shuttle"></i></div>
                       <div class="timeline-info">
-                        <strong>Ngày 1: Tập kết & Di chuyển</strong>
+                        <strong><span class="day-chip">Ngày 1</span> Tập kết & Di chuyển</strong>
                         <p>Xuất phát từ Hà Nội lên TP. Hà Giang, chuyển tải nhu yếu phẩm sang xe bán tải chuyên dụng vào
                           xã.</p>
                       </div>
                     </div>
                     <div class="timeline-step">
-                      <div class="timeline-dot">2</div>
+                      <div class="timeline-dot"><i class="fa-solid fa-gift"></i></div>
                       <div class="timeline-info">
-                        <strong>Ngày 2: Vượt dốc vào điểm trường</strong>
-                        <p>Trao tận tay 300 áo ấm, chăn bông, tổ chức bữa trưa "Có thịt - Có sữa" và góc vui chơi cho
-                          các em.</p>
+                        <strong><span class="day-chip">Ngày 2</span> Vượt dốc vào điểm trường</strong>
+                        <p>Trao tận tay <span class="text-orange-bold">300 áo ấm</span>, chăn bông, tổ chức bữa trưa
+                          <span class="text-green-bold">"Có thịt - Có sữa"</span> và góc vui chơi cho các em.</p>
                       </div>
                     </div>
                     <div class="timeline-step">
-                      <div class="timeline-dot">3</div>
+                      <div class="timeline-dot"><i class="fa-solid fa-paint-roller"></i></div>
                       <div class="timeline-info">
-                        <strong>Ngày 3: Sơn sửa phòng học & Lắp đèn</strong>
-                        <p>Gia cố mái tôn, lắp hệ thống đèn năng lượng mặt trời và trao học bổng cho học sinh nghèo vượt
-                          khó.</p>
+                        <strong><span class="day-chip">Ngày 3</span> Sơn sửa phòng học & Lắp đèn</strong>
+                        <p>Gia cố mái tôn, lắp hệ thống <span class="text-orange-bold">đèn năng lượng mặt trời</span> và
+                          trao học bổng cho học sinh nghèo vượt khó.</p>
                       </div>
                     </div>
                     <div class="timeline-step">
-                      <div class="timeline-dot">4</div>
+                      <div class="timeline-dot"><i class="fa-solid fa-campground"></i></div>
                       <div class="timeline-info">
-                        <strong>Ngày 4: Lửa trại chia tay & Trở về</strong>
+                        <strong><span class="day-chip">Ngày 4</span> Lửa trại chia tay & Trở về</strong>
                         <p>Giao lưu văn nghệ cùng thầy cô và bà con bản làng, tổng kết hành trình và trở về Hà Nội.</p>
                       </div>
                     </div>
                   </div>
 
                   <div class="trip-requirements">
-                    <h5><i class="fa-solid fa-circle-info"></i> Lưu ý đối với TNV:</h5>
-                    <ul>
-                      <li>Chi phí ăn ở, xe cộ được chia sẻ trên tinh thần phi lợi nhuận (camp chia đều).</li>
-                      <li>Trang bị sẵn giày leo núi, áo ấm chống gió và túi ngủ cá nhân.</li>
-                      <li>Được đào tạo kỹ năng sơ cứu và ứng xử văn hóa vùng cao trước khi lên đường.</li>
+                    <h5><i class="fa-solid fa-shield-halved text-orange"></i> Lưu ý đặc biệt đối với TNV:</h5>
+                    <ul class="trip-req-list">
+                      <li><i class="fa-solid fa-circle-check text-green"></i> <span>Chi phí ăn ở, xe cộ được chia sẻ
+                          trên tinh thần phi lợi nhuận (camp chia đều).</span></li>
+                      <li><i class="fa-solid fa-circle-check text-green"></i> <span>Trang bị sẵn giày leo núi, áo ấm
+                          chống gió và túi ngủ cá nhân.</span></li>
+                      <li><i class="fa-solid fa-circle-check text-green"></i> <span>Được đào tạo kỹ năng sơ cứu và ứng
+                          xử văn hóa vùng cao trước khi lên đường.</span></li>
                     </ul>
                   </div>
                 </div>
@@ -863,15 +997,25 @@
         <div class="section-header">
           <span class="section-subtitle">Chương Trình Trọng Tâm</span>
           <h2 class="section-title">Những Hoạt Động Ý Nghĩa Của Dự Án</h2>
-          <p class="section-desc activities-desc">Đằng sau mỗi bước chân đến trường là một hành trình vượt khó, đằng sau mỗi ánh mắt trẻ thơ là những ước mơ đang chờ được thực hiện. Chúng ta có thể không mang đến cho các em một cuộc sống đủ đầy ngay lập tức, nhưng có thể góp một chút yêu thương để hành trình trưởng thành của các em bớt nhọc nhằn hơn.</p>
+          <p class="section-desc activities-desc">Đằng sau mỗi bước chân đến trường là một hành trình vượt khó, đằng sau
+            mỗi ánh mắt trẻ thơ là những ước mơ đang chờ được thực hiện. Chúng ta có thể không mang đến cho các em một
+            cuộc sống đủ đầy ngay lập tức, nhưng có thể góp một chút yêu thương để hành trình trưởng thành của các em
+            bớt nhọc nhằn hơn.</p>
         </div>
 
         <div class="cards-grid">
 
-          <div class="activity-card">
+          <div class="activity-card clickable-story-card"
+            data-story-title="Kiên cố hóa 10 điểm trường mầm non & tiểu học vùng cao"
+            data-story-category="Cơ sở vật chất kiên cố" data-story-location="Hà Giang & Điện Biên"
+            data-story-img="assets/images/hotrotuthien.jpg"
+            data-story-desc="Những phòng học tranh tre nứa lá dột nát, mùa đông gió rít từng cơn lạnh buốt được thay thế hoàn toàn bằng các dãy phòng học xây gạch kiên cố, lợp mái tôn cách nhiệt, cửa sổ kính kín gió và nền gạch hoa sạch sẽ. Dự án đã hoàn thành 8/10 điểm trường, giúp hơn 600 em nhỏ yên tâm học tập quanh năm."
+            data-story-quote="Mỗi viên gạch đặt xuống hôm nay là nền móng vững chắc cho con đường tương lai rộng mở của các em nhỏ vùng cao."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="card-media">
               <img src="assets/images/hotrotuthien.jpg" alt="Xây điểm trường kiên cố cho các bé" class="card-img">
               <span class="card-category">Cơ sở vật chất</span>
+              <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Xây dựng & Kiên cố hóa điểm trường</h3>
@@ -890,10 +1034,16 @@
           </div>
 
 
-          <div class="activity-card">
+          <div class="activity-card clickable-story-card"
+            data-story-title="Chiến dịch 5.000 Áo ấm & Giày ủng chống trượt tuyết" data-story-category="Đông Ấm Cho Em"
+            data-story-location="Sơn La, Lai Châu & Yên Bái" data-story-img="assets/images/embevungcao4.jpg"
+            data-story-desc="Mỗi bộ quà tặng Đông Ấm gồm: 1 áo phao 3 lớp dày dặn có mũ trùm đầu chống nước, 1 đôi ủng cao su lót lông chống trơn trượt trên dốc đá, 2 đôi tất len dày và 1 khăn quàng cổ. Đến nay dự án đã trực tiếp trao gửi tận tay 3.500 bộ quà tặng cho các em học sinh bản xa."
+            data-story-quote="Hơi ấm từ những chiếc áo khoác mới sẽ xua tan cái lạnh giá thấu xương, bảo vệ sức khỏe các em qua mùa đông khắc nghiệt."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="card-media">
               <img src="assets/images/embevungcao4.jpg" alt="Áo ấm mùa đông cho em bé vùng cao" class="card-img">
               <span class="card-category">Đông Ấm Cho Em</span>
+              <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Áo ấm vùng cao & Giày chống rét</h3>
@@ -912,11 +1062,18 @@
           </div>
 
 
-          <div class="activity-card">
+          <div class="activity-card clickable-story-card"
+            data-story-title="Chương trình 'Bữa Ăn Có Thịt' & Thư viện sách ước mơ"
+            data-story-category="Dinh dưỡng & Tri thức" data-story-location="Mường Nhé & Xín Mần"
+            data-story-img="assets/images/embevungcao2.jpg"
+            data-story-desc="Chương trình tài trợ kinh phí nấu ăn bán trú trưa mỗi ngày cho các điểm trường khó khăn nhất, đảm bảo các em luôn có đủ thịt lợn, trứng gà, cá tươi, đậu phụ và sữa tươi tráng miệng. Đồng thời trang bị các tủ sách thiếu nhi đa dạng truyện cổ tích, sách khoa học giúp các em mở rộng thế giới quan."
+            data-story-quote="Một bữa ăn đủ chất và một cuốn sách hay là đôi cánh nâng bước các em bay tới những chân trời mơ ước."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
             <div class="card-media">
               <img src="assets/images/embevungcao2.jpg" alt="Bữa ăn dinh dưỡng và nụ cười rạng rỡ của bé"
                 class="card-img">
               <span class="card-category">Dinh dưỡng & Học tập</span>
+              <span class="story-open-hint"><i class="fa-solid fa-book-open"></i> Xem chi tiết</span>
             </div>
             <div class="card-body">
               <h3 class="card-title">Bữa ăn dinh dưỡng & Tủ sách ước mơ</h3>
@@ -1024,12 +1181,22 @@
         <div class="section-header">
           <span class="section-subtitle">Những Nụ Cười Được Thắp Sáng</span>
           <h2 class="section-title">Câu Chuyện Từ Những Bản Xa</h2>
-          <p class="section-desc stories-desc">Cảm xúc của những người đã trực tiếp đặt chân tới các điểm trường và chứng kiến sự hồi sinh của niềm tin trong ánh mắt trẻ thơ.</p>
+          <p class="section-desc stories-desc">Cảm xúc của những người đã trực tiếp đặt chân tới các điểm trường và
+            chứng kiến sự hồi sinh của niềm tin trong ánh mắt trẻ thơ.</p>
         </div>
 
         <div class="testimonials-grid">
-          <div class="testimonial-card">
-            <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="testimonial-card clickable-story-card" data-story-title="Cái nắm tay ấm áp giữa cái rét Lũng Phìn"
+            data-story-category="Nhật ký tình nguyện" data-story-location="Điểm trường Lũng Phìn, Hà Giang"
+            data-story-img="assets/images/embevungcao11.jpg"
+            data-story-desc="Lần đầu tiên cùng đoàn vượt qua 15km đường bùn lầy bằng xe máy để đến điểm trường Lũng Phìn, nhìn thấy các em đi chân trần tím tái vì rét mà thương thắt ruột. Khoảnh khắc mặc cho em bé chiếc áo ấm mới, em cười rạng rỡ và nắm chặt tay mình... mọi mệt nhọc tan biến hết."
+            data-story-quote="Đi một chuyến mới thấy thanh xuân thật ý nghĩa khi ta biết sống vì người khác, biết sẻ chia hơi ấm cho những cuộc đời khó khăn hơn."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
+            <div class="testimonial-top">
+              <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+              <div class="story-tag tag-volunteer"><i class="fa-solid fa-person-walking-luggage"></i> Trải nghiệm TNV
+              </div>
+            </div>
             <p class="quote-text">"Lần đầu tiên cùng đoàn vượt qua 15km đường bùn lầy bằng xe máy để đến điểm trường
               Lũng Phìn, nhìn thấy các em đi chân trần tím tái vì rét mà thương thắt ruột. Khoảnh khắc mặc cho em bé
               chiếc áo ấm mới, em cười rạng rỡ và nắm chặt tay mình... mọi mệt nhọc tan biến hết."</p>
@@ -1042,13 +1209,22 @@
             </div>
           </div>
 
-          <div class="testimonial-card">
-            <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="testimonial-card clickable-story-card"
+            data-story-title="Khi tiếng cười đùa rộn rã trở lại trường Sín Chải"
+            data-story-category="Tâm sự giáo viên cắm bản" data-story-location="Điểm trường Mầm non Sín Chải"
+            data-story-img="assets/images/embevungcao7.jpg"
+            data-story-desc="Trước đây mỗi khi mùa đông tới, lớp chỉ lác đác 5 - 7 em vì trời quá rét. Từ khi dự án mang áo ấm, chăn bông và tổ chức nấu cơm trưa nóng hổi tại trường, các em đi học đầy đủ 100%. Nhìn các con háo hức ăn từng thìa cơm có thịt, các cô giáo cắm bản rớt nước mắt vì hạnh phúc."
+            data-story-quote="Hơi ấm và những bữa cơm ngon của các nhà hảo tâm chính là chiếc cầu nối giữ chân các em ở lại với lớp học."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
+            <div class="testimonial-top">
+              <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+              <div class="story-tag tag-teacher"><i class="fa-solid fa-chalkboard-user"></i> Giáo viên cắm bản</div>
+            </div>
             <p class="quote-text">"Trước đây mỗi khi mùa đông tới, lớp chỉ lác đác 5 - 7 em vì trời quá rét. Từ khi dự
-              án mang áo ấm, chăn bông và tổ chức nấu cơm trưa nóng hổi tại trường, các em đi học đầy đủ 100%. Tiếng
-              cười đùa vang vọng cả thung lũng."</p>
+              án mang áo ấm, chăn bông và tổ chức <strong class="text-orange">nấu cơm trưa nóng hổi</strong> tại trường,
+              các em đi học đầy đủ 100%. Tiếng cười đùa vang vọng cả thung lũng."</p>
             <div class="author-box">
-              <div class="author-avatar"><i class="fa-solid fa-chalkboard-user"></i></div>
+              <div class="author-avatar avatar-teacher"><i class="fa-solid fa-chalkboard-user"></i></div>
               <div class="author-info">
                 <h4>Cô giáo Vàng Thị Mỷ</h4>
                 <span>Điểm trường Mầm non Sín Chải</span>
@@ -1056,16 +1232,25 @@
             </div>
           </div>
 
-          <div class="testimonial-card">
-            <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+          <div class="testimonial-card clickable-story-card"
+            data-story-title="Gửi trọn niềm tin nơi những hành trình tử tế"
+            data-story-category="Góc sẻ chia nhà hảo tâm" data-story-location="Hà Nội & Tây Bắc"
+            data-story-img="assets/images/embevungcao.jpg"
+            data-story-desc="Dự án 'Nắng Ấm Trao Em' có bảng sao kê rất rõ ràng và cập nhật hình ảnh chuyến đi thường xuyên. Mình ở xa không đi thực địa được nên chọn quyên góp định kỳ mỗi tháng. Rất tin tưởng và cảm kích tinh thần cống hiến hết mình của các bạn trẻ trong ban tổ chức."
+            data-story-quote="Mỗi đồng tiền trao đi đều đến đúng nơi cần đến, mang lại hơi ấm thực sự cho các em nhỏ."
+            role="button" tabindex="0" title="Bấm để xem câu chuyện chi tiết">
+            <div class="testimonial-top">
+              <div class="quote-icon"><i class="fa-solid fa-quote-left"></i></div>
+              <div class="story-tag tag-donator"><i class="fa-solid fa-heart"></i> Nhà hảo tâm</div>
+            </div>
             <p class="quote-text">"Dự án 'Nắng Ấm Trao Em' có bảng sao kê rất rõ ràng và cập nhật hình ảnh chuyến đi
               thường xuyên. Mình ở xa không đi thực địa được nên chọn quyên góp định kỳ mỗi tháng. Rất tin tưởng và cảm
               kích tấm lòng của các bạn trẻ."</p>
             <div class="author-box">
-              <div class="author-avatar"><i class="fa-solid fa-heart"></i></div>
+              <div class="author-avatar avatar-donator"><i class="fa-solid fa-heart"></i></div>
               <div class="author-info">
                 <h4>Chị Trần Bích Ngọc</h4>
-                <span>Nhà hảo tâm (Hà Nội)</span>
+                <span>Nhà hảo tâm đồng hành từ Hà Nội</span>
               </div>
             </div>
           </div>
@@ -1086,13 +1271,20 @@
           <div class="accordion-item">
             <input type="checkbox" id="faq-1" class="accordion-toggle">
             <label for="faq-1" class="accordion-header">
-              <span>Tôi chưa từng đi thiện nguyện vùng cao thì có thể đăng ký tham gia không?</span>
+              <span class="faq-question-wrap">
+                <span class="faq-icon-tag"><i class="fa-solid fa-person-hiking"></i></span>
+                <span>Tôi chưa từng đi thiện nguyện vùng cao thì có thể đăng ký tham gia không?</span>
+              </span>
               <i class="fa-solid fa-chevron-down accordion-arrow"></i>
             </label>
             <div class="accordion-content">
-              <p>Hoàn toàn được! Dự án luôn chào đón các tình nguyện viên mới có tấm lòng nhiệt huyết. Trước mỗi chuyến
-                đi, Ban tổ chức sẽ tổ chức buổi họp mặt trực tiếp hoặc online để phổ biến kỹ năng, phân công nhóm và
-                chuẩn bị đồ bảo hộ cần thiết.</p>
+              <div class="faq-answer-inner">
+                <div class="faq-badge-answer"><i class="fa-solid fa-circle-check text-green"></i> <strong>Hoàn toàn
+                    được!</strong></div>
+                <p>Dự án luôn chào đón các tình nguyện viên mới có tấm lòng nhiệt huyết. Trước mỗi chuyến đi, Ban tổ
+                  chức sẽ tổ chức buổi <span class="text-orange-bold">họp mặt trực tiếp hoặc online</span> để phổ biến
+                  kỹ năng, phân công nhóm và hướng dẫn chuẩn bị đồ bảo hộ cần thiết.</p>
+              </div>
             </div>
           </div>
 
@@ -1100,13 +1292,20 @@
           <div class="accordion-item">
             <input type="checkbox" id="faq-2" class="accordion-toggle">
             <label for="faq-2" class="accordion-header">
-              <span>Chi phí đi lại của tình nguyện viên được tính như thế nào?</span>
+              <span class="faq-question-wrap">
+                <span class="faq-icon-tag"><i class="fa-solid fa-hand-holding-dollar"></i></span>
+                <span>Chi phí đi lại của tình nguyện viên được tính như thế nào?</span>
+              </span>
               <i class="fa-solid fa-chevron-down accordion-arrow"></i>
             </label>
             <div class="accordion-content">
-              <p>Để đảm bảo 100% tiền quỹ quyên góp được sử dụng cho trẻ em vùng cao, chi phí ăn ở di chuyển của các
-                tình nguyện viên sẽ được chia đều công khai giữa các thành viên tham gia (theo nguyên tắc camp chia sẻ
-                phi lợi nhuận).</p>
+              <div class="faq-answer-inner">
+                <div class="faq-badge-answer"><i class="fa-solid fa-shield-heart text-orange"></i> <strong>Nguyên tắc
+                    minh bạch 100%</strong></div>
+                <p>Để đảm bảo <span class="text-green-bold">100% tiền quỹ quyên góp</span> được sử dụng cho trẻ em vùng
+                  cao, chi phí ăn ở di chuyển của các tình nguyện viên sẽ được <span class="text-orange-bold">chia đều
+                    công khai</span> giữa các thành viên tham gia (theo nguyên tắc camp chia sẻ phi lợi nhuận).</p>
+              </div>
             </div>
           </div>
 
@@ -1114,13 +1313,20 @@
           <div class="accordion-item">
             <input type="checkbox" id="faq-3" class="accordion-toggle">
             <label for="faq-3" class="accordion-header">
-              <span>Tôi muốn gửi hiện vật (quần áo cũ, sách vở, thuốc men) thì gửi về đâu?</span>
+              <span class="faq-question-wrap">
+                <span class="faq-icon-tag"><i class="fa-solid fa-box-open"></i></span>
+                <span>Tôi muốn gửi hiện vật (quần áo cũ, sách vở, thuốc men) thì gửi về đâu?</span>
+              </span>
               <i class="fa-solid fa-chevron-down accordion-arrow"></i>
             </label>
             <div class="accordion-content">
-              <p>Chúng tôi tiếp nhận quần áo ấm (đã giặt sạch, còn nguyên vẹn), sách vở truyện tranh và chăn màn tại kho
-                tập kết: Số 45 Đường Hoàng Hoa Thám, Ba Đình, Hà Nội. Vui lòng liên hệ Hotline 0987.654.321 trước khi
-                gửi đồ.</p>
+              <div class="faq-answer-inner">
+                <div class="faq-badge-answer"><i class="fa-solid fa-location-dot text-red"></i> <strong>Địa chỉ kho tập
+                    kết hiện vật</strong></div>
+                <p>Chúng tôi tiếp nhận quần áo ấm (đã giặt sạch, còn nguyên vẹn), sách vở truyện tranh và chăn màn tại
+                  kho: <strong class="text-dark">Số 45 Đường Hoàng Hoa Thám, Ba Đình, Hà Nội</strong>. Vui lòng liên hệ
+                  Hotline <span class="text-orange-bold">0987.654.321</span> trước khi gửi đồ.</p>
+              </div>
             </div>
           </div>
 
@@ -1128,13 +1334,20 @@
           <div class="accordion-item">
             <input type="checkbox" id="faq-4" class="accordion-toggle">
             <label for="faq-4" class="accordion-header">
-              <span>Làm sao tôi biết tiền quyên góp của mình đã được trao tới tận tay các em?</span>
+              <span class="faq-question-wrap">
+                <span class="faq-icon-tag"><i class="fa-solid fa-file-shield"></i></span>
+                <span>Làm sao tôi biết tiền quyên góp của mình đã được trao tới tận tay các em?</span>
+              </span>
               <i class="fa-solid fa-chevron-down accordion-arrow"></i>
             </label>
             <div class="accordion-content">
-              <p>Sau mỗi chuyến đi, toàn bộ biên bản bàn giao có dấu xác nhận của chính quyền địa phương, hình ảnh/video
-                trao quà trực tiếp và hóa đơn chứng từ mua vật phẩm sẽ được đăng tải công khai trên website và fanpage
-                chính thức của dự án.</p>
+              <div class="faq-answer-inner">
+                <div class="faq-badge-answer"><i class="fa-solid fa-stamp text-blue"></i> <strong>Xác nhận chính quyền &
+                    Sao kê tức thì</strong></div>
+                <p>Sau mỗi chuyến đi, toàn bộ <span class="text-orange-bold">biên bản bàn giao có dấu đỏ xác nhận</span>
+                  của chính quyền địa phương, hình ảnh/video trao quà trực tiếp và hóa đơn chứng từ mua vật phẩm sẽ được
+                  đăng tải công khai trên website và fanpage chính thức của dự án.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -1250,6 +1463,52 @@
     </div>
   </footer>
 
+  <!-- Modal Khung Câu Chuyện & Hình Ảnh Chi Tiết (Story Detail Modal) -->
+  <div class="story-modal-backdrop" id="storyModal" aria-hidden="true">
+    <div class="story-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalStoryTitle">
+      <button class="story-modal-close" id="storyModalClose" aria-label="Đóng cửa sổ">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="story-modal-body">
+        <div class="story-modal-media">
+          <img id="modalStoryImg" src="assets/images/embevungcao.jpg" alt="Câu chuyện vùng cao">
+          <span class="story-modal-pill" id="modalStoryPill"><i class="fa-solid fa-location-dot"></i> Bản vùng
+            cao</span>
+        </div>
+
+        <div class="story-modal-content">
+          <div class="story-modal-header">
+            <span class="story-modal-category" id="modalStoryCategory">Góc Câu Chuyện Thực Tế</span>
+            <h3 class="story-modal-title" id="modalStoryTitle">Tiêu đề câu chuyện</h3>
+            <div class="story-modal-meta" id="modalStoryMeta">
+              <span><i class="fa-solid fa-heart text-orange"></i> Dự án "Nắng Ấm Trao Em"</span>
+            </div>
+          </div>
+
+          <div class="story-modal-desc-box">
+            <p id="modalStoryDesc" class="story-modal-desc">Nội dung chi tiết câu chuyện...</p>
+          </div>
+
+          <div class="story-modal-quote-box" id="modalStoryQuoteBox">
+            <i class="fa-solid fa-quote-left story-modal-quote-icon"></i>
+            <span id="modalStoryQuote">"Mỗi sự đóng góp nhỏ bé là một ngọn lửa sưởi ấm mùa đông giá rét cho các
+              em."</span>
+          </div>
+
+          <div class="story-modal-actions">
+            <a href="#action-section" class="btn btn-primary story-modal-cta" id="modalStoryActionBtn">
+              <i class="fa-solid fa-hand-holding-heart"></i> Chung Tay Giúp Các Em
+            </a>
+            <button type="button" class="btn btn-outline story-modal-btn-close">
+              Đóng lại
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Animation on Scroll & Interactive Effects Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -1341,7 +1600,7 @@
 
       // 4. Ripple Click Wave Effect on Buttons
       document.querySelectorAll('.btn, .nav-btn, .top-bar-link').forEach(button => {
-        button.addEventListener('click', function(e) {
+        button.addEventListener('click', function (e) {
           const rect = this.getBoundingClientRect();
           const ripple = document.createElement('span');
           ripple.classList.add('ripple-wave');
@@ -1423,63 +1682,78 @@
         countObserver.observe(metricsBar);
       }
 
-      // 7. Golden Warm Sun Particles (Canvas Interactive Particles)
+      // 7. Golden Warm Sun Particles (Canvas Interactive Particles - Siêu mượt & Tiết kiệm CPU)
       const canvas = document.getElementById('warmParticlesCanvas');
       if (canvas && window.innerWidth > 768) {
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d', { alpha: true });
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
 
+        let resizeTimeout;
         window.addEventListener('resize', () => {
-          width = canvas.width = window.innerWidth;
-          height = canvas.height = window.innerHeight;
-        });
+          clearTimeout(resizeTimeout);
+          resizeTimeout = setTimeout(() => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+          }, 150);
+        }, { passive: true });
 
         const particles = [];
-        const particleCount = 28; // nhẹ nhàng, không gây nặng máy
+        const particleCount = 18;
         const colors = [
-          'rgba(249, 115, 22, 0.45)', // cam
-          'rgba(245, 158, 11, 0.5)',  // vàng nắng
-          'rgba(251, 191, 36, 0.35)', // hổ phách
-          'rgba(253, 230, 138, 0.4)'  // vàng nhạt
+          'rgba(249, 115, 22, 0.45)',
+          'rgba(245, 158, 11, 0.5)',
+          'rgba(251, 191, 36, 0.35)',
+          'rgba(253, 230, 138, 0.4)'
         ];
 
         for (let i = 0; i < particleCount; i++) {
           particles.push({
             x: Math.random() * width,
             y: Math.random() * height,
-            radius: Math.random() * 2.8 + 1.2,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            vx: (Math.random() - 0.5) * 0.4,
-            vy: - (Math.random() * 0.4 + 0.15), // bay bổng nhẹ lên trên như tia nắng
-            alpha: Math.random() * 0.7 + 0.3,
-            pulse: Math.random() * 0.02 + 0.01
+            radius: Math.random() * 2.5 + 1.0,
+            color: colors[i % colors.length],
+            vx: (Math.random() - 0.5) * 0.3,
+            vy: - (Math.random() * 0.35 + 0.15),
+            alpha: Math.random() * 0.6 + 0.25,
+            pulse: Math.random() * 0.015 + 0.008
           });
         }
 
+        // Tối ưu hóa: Tạm dừng vòng lặp canvas khi tab bị ẩn để giữ FPS 60/120Hz mượt mà tuyệt đối
+        let isTabActive = true;
+        document.addEventListener('visibilitychange', () => {
+          isTabActive = !document.hidden;
+          if (isTabActive) {
+            requestAnimationFrame(renderParticles);
+          }
+        });
+
         function renderParticles() {
+          if (!isTabActive) return;
           ctx.clearRect(0, 0, width, height);
 
-          particles.forEach(p => {
+          // Vẽ nhanh không dùng shadowBlur nặng nề, dùng Arc thuần cực nhẹ
+          for (let i = 0; i < particleCount; i++) {
+            const p = particles[i];
             p.x += p.vx;
             p.y += p.vy;
 
-            // wrap around borders
             if (p.y < -10) p.y = height + 10;
             if (p.x < -10) p.x = width + 10;
             if (p.x > width + 10) p.x = -10;
 
-            // pulse effect
             p.alpha += p.pulse;
             if (p.alpha > 0.85 || p.alpha < 0.2) p.pulse = -p.pulse;
 
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, Math.min(1, p.alpha));
+            ctx.fillStyle = p.color;
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-            ctx.fillStyle = p.color;
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = 'rgba(245, 158, 11, 0.5)';
             ctx.fill();
-          });
+            ctx.restore();
+          }
 
           requestAnimationFrame(renderParticles);
         }
@@ -1543,12 +1817,10 @@
           draw(ctx) {
             if (this.alpha <= 0) return;
             ctx.save();
-            ctx.globalAlpha = this.alpha;
+            ctx.globalAlpha = Math.max(0, Math.min(1, this.alpha));
             ctx.translate(this.x, this.y);
             ctx.rotate(this.rotation);
             ctx.fillStyle = this.color;
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = this.color;
 
             if (this.type === 'heart') {
               // Vẽ trái tim nhỏ bay ra
@@ -1596,27 +1868,31 @@
           draw(ctx) {
             if (this.alpha <= 0) return;
             ctx.save();
-            ctx.globalAlpha = Math.max(0, this.alpha);
+            ctx.globalAlpha = Math.max(0, Math.min(1, this.alpha));
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.strokeStyle = this.color;
-            ctx.lineWidth = 2.5;
-            ctx.shadowBlur = 10;
-            ctx.shadowColor = 'rgba(249, 115, 22, 0.8)';
+            ctx.lineWidth = 2.2;
             ctx.stroke();
             ctx.restore();
           }
         }
 
         window.addEventListener('pointerdown', (e) => {
-          // Bắn ra 16 - 22 hạt với mỗi cú click ở bất kỳ đâu trên trang
-          const count = Math.floor(Math.random() * 6) + 16;
+          // Bắn ra 12 - 16 hạt vừa vặn, siêu mượt
+          const count = Math.floor(Math.random() * 5) + 12;
           for (let i = 0; i < count; i++) {
             clickParticles.push(new ClickParticle(e.clientX, e.clientY));
           }
-          // Thêm vòng xung kích ánh sáng (Shockwave ring)
           shockwaves.push(new Shockwave(e.clientX, e.clientY));
-        });
+          
+          if (!isClickLoopRunning) {
+            isClickLoopRunning = true;
+            requestAnimationFrame(animateClickEffects);
+          }
+        }, { passive: true });
+
+        let isClickLoopRunning = false;
 
         function animateClickEffects() {
           cCtx.clearRect(0, 0, cWidth, cHeight);
@@ -1641,10 +1917,302 @@
             }
           }
 
-          requestAnimationFrame(animateClickEffects);
+          if (shockwaves.length > 0 || clickParticles.length > 0) {
+            requestAnimationFrame(animateClickEffects);
+          } else {
+            isClickLoopRunning = false;
+            cCtx.clearRect(0, 0, cWidth, cHeight);
+          }
+        }
+      }
+
+      // 9. Interactive Story Modal Logic for Cards
+      const storyModal = document.getElementById('storyModal');
+      const storyModalClose = document.getElementById('storyModalClose');
+      const modalStoryImg = document.getElementById('modalStoryImg');
+      const modalStoryPill = document.getElementById('modalStoryPill');
+      const modalStoryCategory = document.getElementById('modalStoryCategory');
+      const modalStoryTitle = document.getElementById('modalStoryTitle');
+      const modalStoryDesc = document.getElementById('modalStoryDesc');
+      const modalStoryQuote = document.getElementById('modalStoryQuote');
+      const modalStoryQuoteBox = document.getElementById('modalStoryQuoteBox');
+      const closeButtons = document.querySelectorAll('.story-modal-close, .story-modal-btn-close');
+
+      function openStoryModal(card) {
+        if (!storyModal) return;
+
+        // Extract story attributes from clicked card
+        const title = card.getAttribute('data-story-title') ||
+          card.querySelector('h3, h4, .gallery-name, .card-title')?.innerText?.trim() ||
+          'Câu chuyện vùng cao';
+        const category = card.getAttribute('data-story-category') || 'Hành Trình Yêu Thương';
+        const location = card.getAttribute('data-story-location') ||
+          card.querySelector('.gallery-tag, .about-pill, .trip-tag')?.innerText?.trim() ||
+          'Bản vùng cao Tây Bắc';
+
+        // Image source fallback: card img or local reliable fallback
+        let imgSrc = card.getAttribute('data-story-img');
+        if (!imgSrc) {
+          const imgEl = card.querySelector('img');
+          imgSrc = imgEl ? imgEl.getAttribute('src') : 'assets/images/embevungcao.jpg';
         }
 
-        animateClickEffects();
+        const desc = card.getAttribute('data-story-desc') ||
+          card.querySelector('p, .gallery-caption, .card-text')?.innerText?.trim() ||
+          'Dự án "Nắng Ấm Trao Em" mang hơi ấm, sách vở và trường học khang trang tới các em nhỏ vùng cao.';
+        const quote = card.getAttribute('data-story-quote');
+
+        // Populate modal data
+        if (modalStoryTitle) modalStoryTitle.innerText = title;
+        if (modalStoryCategory) modalStoryCategory.innerText = category;
+        if (modalStoryPill) modalStoryPill.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${location}`;
+        if (modalStoryDesc) modalStoryDesc.innerText = desc;
+
+        if (modalStoryQuote && modalStoryQuoteBox) {
+          if (quote) {
+            modalStoryQuote.innerText = `"${quote}"`;
+            modalStoryQuoteBox.style.display = 'flex';
+          } else {
+            modalStoryQuoteBox.style.display = 'none';
+          }
+        }
+
+        if (modalStoryImg) {
+          modalStoryImg.onerror = function () {
+            // Tự động fallback sang ảnh chất lượng cao có sẵn nếu ảnh ngoài bị lỗi
+            this.onerror = null;
+            this.src = 'assets/images/embevungcao.jpg';
+          };
+          modalStoryImg.src = imgSrc;
+          modalStoryImg.alt = title;
+        }
+
+        // Show modal with animation
+        storyModal.classList.add('is-active');
+        document.body.classList.add('modal-open');
+      }
+
+      function closeStoryModal() {
+        if (!storyModal) return;
+        storyModal.classList.remove('is-active');
+        document.body.classList.remove('modal-open');
+      }
+
+      // Attach click events to all clickable story cards
+      const storyCards = document.querySelectorAll('.clickable-story-card');
+      storyCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+          // Do not interfere if user clicked an explicit link or button inside the card
+          if (e.target.closest('a, button, input, label')) return;
+          openStoryModal(card);
+        });
+
+        // Keyboard accessibility (Enter / Space)
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openStoryModal(card);
+          }
+        });
+      });
+
+      // Close modal events
+      closeButtons.forEach(btn => {
+        btn.addEventListener('click', closeStoryModal);
+      });
+
+      // Close on backdrop click
+      storyModal?.addEventListener('click', (e) => {
+        if (e.target === storyModal) {
+          closeStoryModal();
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && storyModal?.classList.contains('is-active')) {
+          closeStoryModal();
+        }
+      });
+
+      // If user clicks "Chung Tay Giúp Các Em" in modal, close modal to let smooth scroll take over
+      const modalStoryActionBtn = document.getElementById('modalStoryActionBtn');
+      modalStoryActionBtn?.addEventListener('click', () => {
+        closeStoryModal();
+      });
+
+      // 10. Three.js: Hiệu ứng 3D Nắng Ấm & Những Hạt Yêu Thương Lơ Lửng (3D Golden Sun Particles - Tối ưu 60FPS)
+      if (typeof THREE !== 'undefined') {
+        const container = document.getElementById('threeSunCanvasContainer');
+        if (container) {
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
+          camera.position.z = 250;
+
+          // Tối ưu hóa WebGL: tắt antialias (không cần thiết với Points hạt), dùng powerPreference high-performance
+          const renderer = new THREE.WebGLRenderer({ 
+            alpha: true, 
+            antialias: false,
+            powerPreference: 'high-performance'
+          });
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+          container.appendChild(renderer.domElement);
+
+          // Tạo Canvas Texture dạng đốm sáng tròn phát sáng mềm
+          function createGlowTexture(color1, color2) {
+            const size = 32; // Giảm kích thước texture 32x32 tối ưu bộ nhớ GPU
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            const grad = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+            grad.addColorStop(0, color1);
+            grad.addColorStop(0.4, color2);
+            grad.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, size, size);
+            return new THREE.CanvasTexture(canvas);
+          }
+
+          // 1. Hệ thống hạt bụi nắng 3D (3D Sunbeam Particles)
+          const sunParticlesCount = 38; // 38 hạt 3D cực mượt trên mọi cấu hình
+          const sunGeometry = new THREE.BufferGeometry();
+          const sunPositions = new Float32Array(sunParticlesCount * 3);
+          const sunVelocities = [];
+
+          for (let i = 0; i < sunParticlesCount; i++) {
+            sunPositions[i * 3] = (Math.random() - 0.5) * 500;
+            sunPositions[i * 3 + 1] = (Math.random() - 0.5) * 400;
+            sunPositions[i * 3 + 2] = (Math.random() - 0.5) * 150;
+
+            sunVelocities.push({
+              vx: (Math.random() - 0.5) * 0.08,
+              vy: Math.random() * 0.2 + 0.06,
+              vz: (Math.random() - 0.5) * 0.08
+            });
+          }
+
+          sunGeometry.setAttribute('position', new THREE.BufferAttribute(sunPositions, 3));
+
+          const sunMaterial = new THREE.PointsMaterial({
+            size: 15,
+            map: createGlowTexture('rgba(255, 230, 150, 0.95)', 'rgba(249, 115, 22, 0.45)'),
+            transparent: true,
+            opacity: 0.75,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false
+          });
+
+          const sunParticleSystem = new THREE.Points(sunGeometry, sunMaterial);
+          scene.add(sunParticleSystem);
+
+          // 2. Các đốm nắng lớn lơ lửng bồng bềnh ở hậu cảnh (Golden Sun Orbs)
+          const orbGroup = new THREE.Group();
+          const orbCount = 3;
+          for (let i = 0; i < orbCount; i++) {
+            const orbGeo = new THREE.SphereGeometry(Math.random() * 3.5 + 2, 8, 8); // Polygon thấp (8x8) siêu nhẹ
+            const orbMat = new THREE.MeshBasicMaterial({
+              color: i % 2 === 0 ? 0xf59e0b : 0xf97316,
+              transparent: true,
+              opacity: 0.16,
+              blending: THREE.AdditiveBlending
+            });
+            const orbMesh = new THREE.Mesh(orbGeo, orbMat);
+            orbMesh.position.set(
+              (Math.random() - 0.5) * 360,
+              (Math.random() - 0.5) * 260,
+              (Math.random() - 0.5) * 100
+            );
+            orbMesh.userData = {
+              speedY: Math.random() * 0.12 + 0.06,
+              angle: Math.random() * Math.PI * 2,
+              swing: Math.random() * 0.18 + 0.06
+            };
+            orbGroup.add(orbMesh);
+          }
+          scene.add(orbGroup);
+
+          let mouseX = 0;
+          let mouseY = 0;
+          let targetX = 0;
+          let targetY = 0;
+
+          // Throttle event mousemove
+          let lastMouseTime = 0;
+          window.addEventListener('mousemove', (e) => {
+            const now = performance.now();
+            if (now - lastMouseTime > 20) {
+              lastMouseTime = now;
+              mouseX = (e.clientX - window.innerWidth / 2) * 0.06;
+              mouseY = (e.clientY - window.innerHeight / 2) * 0.06;
+            }
+          }, { passive: true });
+
+          let scrollY = window.scrollY;
+          window.addEventListener('scroll', () => {
+            scrollY = window.scrollY;
+          }, { passive: true });
+
+          let resizeTimer;
+          window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+              camera.aspect = window.innerWidth / window.innerHeight;
+              camera.updateProjectionMatrix();
+              renderer.setSize(window.innerWidth, window.innerHeight);
+            }, 150);
+          }, { passive: true });
+
+          // Kiểm tra tab active để tạm dừng Three.js khi người dùng đổi tab (giúp máy luôn mát & mượt)
+          let isTabVisible = true;
+          document.addEventListener('visibilitychange', () => {
+            isTabVisible = !document.hidden;
+            if (isTabVisible) {
+              clock.start();
+              requestAnimationFrame(animateThree);
+            }
+          });
+
+          let clock = new THREE.Clock();
+
+          function animateThree() {
+            if (!isTabVisible) return;
+            requestAnimationFrame(animateThree);
+            const elapsedTime = clock.getElapsedTime();
+
+            const positions = sunGeometry.attributes.position.array;
+            for (let i = 0; i < sunParticlesCount; i++) {
+              positions[i * 3 + 1] += sunVelocities[i].vy;
+              positions[i * 3] += sunVelocities[i].vx + Math.sin(elapsedTime * 0.6 + i) * 0.06;
+              positions[i * 3 + 2] += sunVelocities[i].vz;
+
+              if (positions[i * 3 + 1] > 220) positions[i * 3 + 1] = -220;
+              if (positions[i * 3] > 300) positions[i * 3] = -300;
+              if (positions[i * 3] < -300) positions[i * 3] = 300;
+            }
+            sunGeometry.attributes.position.needsUpdate = true;
+
+            sunParticleSystem.rotation.y = elapsedTime * 0.02;
+
+            orbGroup.children.forEach(orb => {
+              orb.position.y += orb.userData.speedY;
+              orb.position.x += Math.sin(elapsedTime * 0.8 + orb.userData.angle) * orb.userData.swing;
+              if (orb.position.y > 180) orb.position.y = -180;
+            });
+
+            targetX += (mouseX - targetX) * 0.035;
+            targetY += (mouseY - targetY) * 0.035;
+
+            camera.position.x = targetX;
+            camera.position.y = -targetY - (scrollY * 0.03);
+            camera.lookAt(scene.position);
+
+            renderer.render(scene, camera);
+          }
+
+          animateThree();
+        }
       }
     });
   </script>
